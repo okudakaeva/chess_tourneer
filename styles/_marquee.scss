@@ -1,0 +1,65 @@
+@use "fonts" as f;
+
+.marquee {
+  @include f.Merriweather();
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--marquee-height);
+  padding: var(--marquee-padding);
+  background-color: var(--marquee-bg);
+  color: var(--marquee-text);
+  font-size: var(--marquee-font-size);
+  line-height: var(--marquee-line-height);
+  text-transform: uppercase;
+
+  &-content {
+    background: inherit;
+    color: inherit;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--marquee-gap);
+    white-space: nowrap;
+    animation: marquee 15s linear infinite;
+    will-change: transform;
+
+    & span {
+      background: inherit;
+      color: inherit;
+      display: inline-flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      gap: var(--marquee-gap);
+
+      &:after {
+        content: "";
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        background: var(--icon-bullet) no-repeat center;
+      }
+    }
+  }
+
+  &:hover &-content {
+    animation-play-state: paused;
+  }
+
+  @media (max-width: 450px) {
+    height: var(--marquee-height-mobile);
+    padding: var(--marquee-padding-mobile);
+    font-size: var(--marquee-font-size-mobile);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

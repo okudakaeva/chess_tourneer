@@ -1,0 +1,50 @@
+:root {
+  --base-font-size: 20px;
+  --base-line-height: 120%;
+  --base-bg: #E9DED4;
+  --base-text: #313131;
+  --heading-text: #595653;
+
+  --container-width: 89.45%;
+  --container-width-mobile: 89.6%;
+  --container-max-width: 1604px;
+
+  --header-min-height: 700px;
+  --header-min-height-mobile: 812px;
+  --header-padding-top: 18px;
+  --header-padding-top-mmobile: 16px;
+  --header-padding-bottom: 134px;
+
+  --footer-min-height: 150px;
+  --footer-padding: 40px 0 60px;
+  --footer-font-size: 16px;
+  --footer-line-height: 120%;
+
+  --marquee-height: 60px;
+  --marquee-height-mobile: 38px;
+  --marquee-padding: 18px 0;
+  --marquee-padding-mobile: 10px 0;
+  --marquee-font-size: 22px;
+  --marquee-font-size-mobile: 16px;
+  --marquee-line-height: 110%;
+  --marquee-gap: 12px;
+  --marquee-bg: #F54932;
+  --marquee-text: #fff;
+
+  --button-width: 263px;
+  --button-width-mobile: 100%;
+  --button-padding: 13px 49px;
+  --button-padding-moible: 11px 20px;
+  --button-border-radius: 66px;
+  --button-font-size: 16px;
+  --button-line-height: 130%;
+  --button-base: #1F1F1F;
+  --button-text: #fff;
+  --button-accent: #FBCE51;
+  --button-disabled: #D6D6D6;
+  --button-details-line-height: 120%;
+  --button-details-base: #3057A2;
+  --button-details-padding: 6px 12px;
+
+  --icon-bullet: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCA2IDYiPjxjaXJjbGUgY3g9IjMiIGN5PSIzIiByPSIzIiBmaWxsPSIjZmZmIi8+PC9zdmc+Cg==");
+}

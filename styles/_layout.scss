@@ -1,0 +1,244 @@
+@use "fonts" as f;
+
+body {
+  @include f.GolosText();
+  font-size: var(--base-font-size);
+  line-height: var(--base-line-height);
+  color: var(--base-text);
+  background: #fff;
+}
+
+.header, .footer {
+  background-color: var(--base-bg);
+}
+
+.footer {
+  box-sizing: border-box;
+  min-height: var(--footer-min-height);
+  padding: var(--footer-padding);
+  font-size: var(--footer-font-size);
+  line-height: var(--footer-line-height);
+}
+
+.container {
+  width: var(--container-width);
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+
+  @media (max-width: 450px) {
+    max-width: 100%;
+    width: var(--container-width-mobile);
+  }
+}
+
+.header {
+  box-sizing: border-box;
+  min-height: var(--header-min-height);
+  padding-top: var(--header-padding-top);
+  padding-bottom: var(--header-padding-bottom);
+  background-image: url("./images/chess_pawn.png"),
+  url("./images/chess_knight.png"),
+  url("../images/city.png"),
+  url("./images/chess_king.png"),
+  url("./images/chess_queen.png"),
+  url("./images/mars-signals.svg"),
+  url("./images/ellipse.svg");
+  background-position:
+      right calc(50% - 600px) bottom 18px,
+      right calc(50% - 254px) bottom,
+      center bottom,
+      right calc(50% - 100px) bottom 164px,
+      right calc(50% - 440px) bottom 268px,
+      right calc(50% - 320px) bottom 26px,
+      right calc(50% - 320px) bottom 84px;
+      background-size: 83px 123px,
+      179px 197px,
+      1627px 441px,
+      130px 266px,
+      146px 266px,
+      776px 776px,
+      660px 660px;
+  background-repeat: no-repeat;
+  transition: background-position-x 0.6s ease-in-out;
+
+  @supports (background-blend-mode: color-burn) {
+    & {
+      background-image:
+          url('./images/chess_pawn.webp'),
+          url('./images/chess_knight.webp'),
+          url('./images/gray_wall.webp'),
+          url("./images/city.webp"),
+          url("./images/chess_king.webp"),
+          url("./images/chess_queen.webp"),
+          url("./images/mars-signals.svg"),
+          url("./images/ellipse.svg");
+      background-position:
+          right calc(50% - 600px) bottom 18px,
+          right calc(50% - 254px) bottom,
+          center bottom,
+          center bottom,
+          right calc(50% - 100px) bottom 164px,
+          right calc(50% - 440px) bottom 268px,
+          right calc(50% - 320px) bottom 26px,
+          right calc(50% - 320px) bottom 84px;
+      background-size:
+          83px 123px,
+          179px 197px,
+          1920px 881px,
+          1627px 441px,
+          130px 266px,
+          146px 266px,
+          776px 776px,
+          660px 660px;
+      background-blend-mode:
+          normal,
+          normal,
+          color-burn,
+          normal,
+          normal,
+          normal,
+          overlay,
+          normal;
+      background-repeat:
+          no-repeat,
+          no-repeat,
+          repeat,
+          no-repeat,
+          no-repeat,
+          no-repeat,
+          no-repeat,
+          no-repeat;
+    }
+  }
+  @media (max-width: 1250px) {
+    background-image:
+        url("./images/chess_knight.png"),
+        url("../images/city.png"),
+        url("./images/chess_king.png"),
+        url("./images/chess_queen.png"),
+        url("./images/mars-signals.svg"),
+        url("./images/ellipse.svg");
+    background-position:
+        right 293px bottom,
+        right -188px bottom,
+        right 460px bottom 164px,
+        right 110px bottom 268px,
+        right -84px bottom 26px,
+        right -26px bottom 84px;
+    background-size:
+        179px 197px,
+        1627px 441px,
+        130px 266px,
+        146px 266px,
+        776px 776px,
+        660px 660px;
+    background-repeat: no-repeat;
+
+    @supports (background-blend-mode: color-burn) {
+      & {
+        background-image: url('./images/chess_knight.webp'),
+        url('./images/gray_wall.webp'),
+        url("./images/city.webp"),
+        url("./images/chess_king.webp"),
+        url("./images/chess_queen.webp"),
+        url("./images/mars-signals.svg"),
+        url("./images/ellipse.svg");
+        background-position:
+            right 293px bottom,
+            center bottom,
+            right -188px bottom,
+            right 460px bottom 164px,
+            right 110px bottom 268px,
+            right -84px bottom 26px,
+            right -26px bottom 84px;
+        background-size:
+            179px 197px,
+            1920px 881px,
+            1627px 441px,
+            130px 266px,
+            146px 266px,
+            776px 776px,
+            660px 660px;
+        background-blend-mode:
+            normal,
+            color-burn,
+            normal,
+            normal,
+            normal,
+            overlay,
+            normal;
+        background-repeat:
+            no-repeat,
+            repeat,
+            no-repeat,
+            no-repeat,
+            no-repeat,
+            no-repeat,
+            no-repeat;
+      }
+    }
+  }
+
+  @media (max-width: 770px) {
+    background-position:
+        center bottom,
+        right -188px bottom,
+        right 460px bottom 164px,
+        right 110px bottom 268px,
+        right -84px bottom 26px,
+        right -26px bottom 84px;
+
+    @supports (background-blend-mode: color-burn) {
+      & {
+        background-position:
+            center bottom,
+            center bottom,
+            right -188px bottom,
+            right 460px bottom 164px,
+            right 110px bottom 268px,
+            right -84px bottom 26px,
+            right -26px bottom 84px;
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    background-position:
+        center bottom,
+        right -110px bottom,
+        right 250px bottom 110px,
+        right 80px bottom 154px,
+        center bottom 26px,
+        center bottom 55px;
+        background-size: 89px 98px,
+        894px 242px,
+        65px 133px,
+        73px 133px,
+        388px 388px,
+        330px 330px;
+
+    @supports (background-blend-mode: color-burn) {
+      & {
+        background-position:
+            center bottom,
+            center bottom,
+            right -110px bottom,
+            right 250px bottom 110px,
+            right 80px bottom 154px,
+            center bottom 26px,
+            center bottom 55px;
+            background-size: 89px 98px,
+            960px 440px,
+            894px 242px,
+            65px 133px,
+            73px 133px,
+            388px 388px,
+            330px 330px;
+      }
+    }
+  }
+  @media (max-width: 450px) {
+    min-height: var(--header-min-height-mobile);
+    padding-top: var(--header-padding-top-mmobile);
+  }
+}
