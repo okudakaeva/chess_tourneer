@@ -10,18 +10,18 @@
     &_item {
       line-height: 100%;
 
-      .main-screen_branding_item_logo {
+      &_logo {
         display: block;
       }
 
-      .main-screen_branding_item_header {
+      &_header {
         @include f.GolosText(700);
         font-size: 16.65px;
         line-height: 108%;
         text-transform: uppercase;
         margin: 0;
         padding: 0;
-        color: var(--heading-text);
+        color: var(--logo-text);
 
         @media (max-width: 450px) {
           font-size: 14.42px
@@ -30,10 +30,65 @@
     }
   }
 
+  &_offer-block{
+    width: 542px;
+    margin-bottom: 40px;
+
+    &_header {
+      @include f.Merriweather();
+      font-size: 60px;
+      line-height: 110%;
+      color: var(--base-text);
+      text-transform: uppercase;
+      margin-top: 0;
+      margin-bottom: 24px;
+
+      &_accent {
+        display: block;
+        text-align: center;
+      }
+    }
+    &_content {
+      text-align: center;
+      font-size: 18px;
+      line-height: 130%;
+
+      @media (max-width: 1200px) and (min-width: 600px) {
+        text-shadow: 0 0 5px var(--button-text);
+        background: rgba(255,255,255,.5);
+        border-radius: 15px;
+      }
+    }
+    @media (max-width: 600px) {
+      width: 335px;
+      max-width: 100%;
+      margin-bottom: 32px;
+
+      &_header {
+        font-size: 36px;
+
+        &_accent {
+          &--right {
+            text-align: right;
+          }
+        }
+      }
+
+      &_content {
+        text-align: left;
+      }
+    }
+  }
+
   .button--light {
-    @media (max-width: 1250px) {
+    @media (max-width: 1200px) {
       border-color: transparent;
       background-color: rgba(255, 255, 255, .9);
+
+      &:hover {
+        background-color: var(--button-base);
+        color: var(--button-text);
+      }
     }
   }
 
