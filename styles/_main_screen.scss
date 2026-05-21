@@ -1,0 +1,51 @@
+@use "fonts" as f;
+
+.main-screen {
+  &_branding {
+    display: flex;
+    align-items: center;
+    margin-bottom: 62px;
+    gap: 6px;
+
+    &_item {
+      line-height: 100%;
+
+      .main-screen_branding_item_logo {
+        display: block;
+      }
+
+      .main-screen_branding_item_header {
+        @include f.GolosText(700);
+        font-size: 16.65px;
+        line-height: 108%;
+        text-transform: uppercase;
+        margin: 0;
+        padding: 0;
+        color: var(--heading-text);
+
+        @media (max-width: 450px) {
+          font-size: 14.42px
+        }
+      }
+    }
+  }
+
+  .button--light {
+    @media (max-width: 1250px) {
+      border-color: transparent;
+      background-color: rgba(255, 255, 255, .9);
+    }
+  }
+
+  .links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+
+    @media (max-width: 600px) {
+      display: block;
+    }
+  }
+}
+

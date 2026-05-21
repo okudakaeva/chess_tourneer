@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "build": "sass --load-path=node_modules/normalize.css --style=compressed styles.scss:styles.css"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  }
+}
