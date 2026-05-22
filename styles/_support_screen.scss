@@ -1,15 +1,15 @@
 .support-screen {
-  min-height: 225px;
+  min-height: 250px;
   display: flex;
   align-items: center;
-  margin-bottom: 60px;
+  margin-bottom: 13px;
   position: relative;
-  padding-right: 400px;
+  padding-right: 455px;
 
   &_article {
     margin-bottom: 0;
 
-    &_image {
+    &_picture {
       position: absolute;
       top: 50%;
       right: 0;
@@ -21,12 +21,13 @@
     }
   }
 
-  @media (max-width: 819px) {
+  @media (max-width: 920px) {
     position: static;
     padding-right: 0;
+    min-height: 0;
 
     &_article {
-      &_image {
+      &_picture {
         position: static;
         top: auto;
         right: auto;
@@ -37,6 +38,8 @@
 
         img{
           display: inline-block;
+          max-width: 100%;
+          height: auto;
         }
       }
     }
