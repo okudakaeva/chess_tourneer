@@ -1,0 +1,44 @@
+.support-screen {
+  min-height: 225px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 60px;
+  position: relative;
+  padding-right: 400px;
+
+  &_article {
+    margin-bottom: 0;
+
+    &_image {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+
+      img{
+        display: block;
+      }
+    }
+  }
+
+  @media (max-width: 819px) {
+    position: static;
+    padding-right: 0;
+
+    &_article {
+      &_image {
+        position: static;
+        top: auto;
+        right: auto;
+        transform: none;
+        text-align: center;
+        display: block;
+        padding: 24px 0;
+
+        img{
+          display: inline-block;
+        }
+      }
+    }
+  }
+}

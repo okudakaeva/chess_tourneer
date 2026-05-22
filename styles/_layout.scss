@@ -7,6 +7,58 @@ body {
   color: var(--base-text);
   background: #fff;
 }
+a {
+  color: var(--link-text);
+  text-decoration: none;
+
+  &:hover{
+    text-decoration: underline;
+  }
+}
+h1, h2, h3 {
+  @include f.Merriweather();
+  color: var(--base-text);
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 31px;
+
+  a {
+    color: var(--header-link-text);
+  }
+}
+
+h1 {
+  font-size: 60px;
+  line-height: 110%;
+
+  @media (max-width: 600px) {
+    font-size: 36px;
+  }
+}
+
+h2 {
+  font-size: 54px;
+  line-height: 120%;
+
+  @media (max-width: 600px) {
+    font-size: 36px;
+    line-height: 110%;
+  }
+}
+
+h3 {
+  font-size: 36px;
+  line-height: 135%;
+
+  @media (max-width: 600px) {
+    font-size: 28px;
+  }
+}
+
+.main {
+  padding-top: 90px;
+  padding-bottom: 140px;
+}
 
 .header, .footer {
   background-color: var(--base-bg);
@@ -36,13 +88,14 @@ body {
   min-height: var(--header-min-height);
   padding-top: var(--header-padding-top);
   padding-bottom: var(--header-padding-bottom);
-  background-image: url("./images/chess_pawn.png"),
-  url("./images/chess_knight.png"),
-  url("../images/city.png"),
-  url("./images/chess_king.png"),
-  url("./images/chess_queen.png"),
-  url("./images/mars-signals.svg"),
-  url("./images/ellipse.svg");
+  background-image:
+      url("./images/chess_pawn.png"),
+      url("./images/chess_knight.png"),
+      url("../images/city.png"),
+      url("./images/chess_king.png"),
+      url("./images/chess_queen.png"),
+      url("./images/mars-signals.svg"),
+      url("./images/ellipse.svg");
   background-position:
       right calc(50% - 600px) bottom 18px,
       right calc(50% - 254px) bottom,
@@ -59,7 +112,6 @@ body {
       776px 776px,
       660px 660px;
   background-repeat: no-repeat;
-  transition: background-position-x 0.6s ease-in-out;
 
   @supports (background-blend-mode: color-burn) {
     & {
@@ -136,13 +188,14 @@ body {
 
     @supports (background-blend-mode: color-burn) {
       & {
-        background-image: url('./images/chess_knight.webp'),
-        url('./images/gray_wall.webp'),
-        url("./images/city.webp"),
-        url("./images/chess_king.webp"),
-        url("./images/chess_queen.webp"),
-        url("./images/mars-signals.svg"),
-        url("./images/ellipse.svg");
+        background-image:
+            url('./images/chess_knight.webp'),
+            url('./images/gray_wall.webp'),
+            url("./images/city.webp"),
+            url("./images/chess_king.webp"),
+            url("./images/chess_queen.webp"),
+            url("./images/mars-signals.svg"),
+            url("./images/ellipse.svg");
         background-position:
             right 293px bottom,
             center bottom,

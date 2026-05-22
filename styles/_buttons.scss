@@ -28,7 +28,8 @@ button {
   }
 
   &:active {
-    opacity: .75;
+    opacity: .95;
+    text-shadow: 0 0 1px var(--button-text);
   }
 
   &[disabled], &--disabled {
@@ -74,6 +75,10 @@ button {
   width: 44px;
   height: 44px;
   border-radius: 50%;
+
+  &:active {
+    opacity: .75;
+  }
 }
 
 .button-details {
