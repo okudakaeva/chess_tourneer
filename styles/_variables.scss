@@ -1,7 +1,15 @@
+$mobile-portrait: 450px;
+$tablet-portrait: 600px;
+$tablet-plus-portrait: 770px;
+$tablet-landscape: 920px;
+$screen-medium: 1250px;
+
 :root {
   --base-font-size: 20px;
   --base-line-height: 120%;
+  --body-bg: #ffffff;
   --base-bg: #E9DED4;
+  --block-bg: #f4edd2;
   --base-text: #313131;
   --logo-text: #595653;
   --link-text: #3057A2;
@@ -49,5 +57,14 @@
   --button-details-base: #3057A2;
   --button-details-padding: 6px 12px;
 
-  --icon-bullet: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCA2IDYiPjxjaXJjbGUgY3g9IjMiIGN5PSIzIiByPSIzIiBmaWxsPSIjZmZmIi8+PC9zdmc+Cg==");
+  --icon-bullet: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDY2MCA2NjAiPjxjaXJjbGUgY3g9IjMzMCIgY3k9IjMzMCIgcj0iMzMwIi8+PC9zdmc+");
+  --bullet-size: 6px;
+  --dot-size: 10px;
+  --dot-color: #D9D9D9;
+  --dot-active-color: #313131;
+  --mobile-portrait: #{$mobile-portrait};
+  --tablet-portrait: #{$tablet-portrait};
+  --tablet-plus-portrait: #{$tablet-plus-portrait};
+  --tablet-landscape: #{$tablet-landscape};
+  --screen-medium: #{$screen-medium};
 }

@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <title>Клуб четырех коней</title>
-    <link rel="stylesheet" href="styles.css"/>
+    <link rel="stylesheet" href="./styles.css"/>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Превратите уездный город в столицу земного шара" />
@@ -13,44 +13,41 @@
 
     <link rel="mask-icon" href="./favicon.svg" color="#595653" />
     <link rel="icon" href="./favicon.svg" />
+    <link rel="preload" href="./images/gray_wall.webp" as="image" type="image/webp" fetchpriority="high">
+    <script src="./js/stages-carousel.js" type="module"></script>
+    <script src="./js/main.js" type="module"></script>
 </head>
 <body>
 <header class="header main-screen">
     <div class="container">
         <section id="logo" class="main-screen_branding">
             <div class="main-screen_branding_item">
-                <img class="main-screen_branding_item_logo"
-                     src="./images/logo.svg" alt="Клуб четырех коней" width="92" height="32">
+                <a href="/">
+                    <img class="main-screen_branding_item_logo"
+                         src="./images/logo.svg" alt="Клуб четырех коней" width="92" height="32">
+                </a>
             </div>
             <div class="main-screen_branding_item">
-                <h2 class="main-screen_branding_item_header">Клуб<br/>четырех коней</h2>
+                <h1 class="main-screen_branding_item_header">Клуб<br/>четырех коней</h1>
             </div>
         </section>
         <section id="main" class="main-screen_offer-block">
             <h1 class="main-screen_offer-block_header">
-                Превратите уездный город <span class="main-screen_offer-block_header_accent">в&nbsp;столицу</span> <span class="main-screen_offer-block_header_accent main-screen_offer-block_header_accent--right">земного шара</span>
+                Превратите уездный город <span class="main-screen_offer-block_header_accent">в&nbsp;столицу</span>
+                <span class="main-screen_offer-block_header_accent main-screen_offer-block_header_accent--right">
+                    земного шара
+                </span>
             </h1>
-            <p class="main-screen_offer-block_content">Оплатите взнос на&nbsp;телеграммы для&nbsp;организации Международного васюкинского турнира по&nbsp;шахматам</p>
+            <p class="main-screen_offer-block_content">
+                Оплатите взнос на&nbsp;телеграммы для&nbsp;организации
+                Международного васюкинского турнира по&nbsp;шахматам
+            </p>
         </section>
         <nav>
             <div class="links">
                 <a href="#support" class="button button--dark">Поддержать шахматную&nbsp;мысль</a>
-                <a href="#turner" class="button button--light">Подробнее о&nbsp;турнире</a>
+                <a href="#tourney" class="button button--light">Подробнее о&nbsp;турнире</a>
             </div>
-
-<!--            <br />-->
-
-<!--            <button type="button" class="btn">-->
-<!--                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 20" width="12" height="20">-->
-<!--                    <path stroke="#fff" stroke-linecap="square" stroke-width="2" d="M9.876 18.337 1.414 9.876l8.462-8.462"/>-->
-<!--                </svg>-->
-<!--            </button>-->
-
-<!--            <button type="button" class="btn">-->
-<!--                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 20" width="12" height="20">-->
-<!--                    <path stroke="#fff" stroke-linecap="square" stroke-width="2" d="m1.414 1.414 8.462 8.462-8.462 8.461"/>-->
-<!--                </svg>-->
-<!--            </button>-->
 
 <!--            <a href="#" class="button-details">Подробнее</a>-->
         </nav>
@@ -72,26 +69,26 @@
             <h3 class="support-screen_article">
                 <span>Чтобы&nbsp;поддержать Международный васюкинский турнир</span>
                 <a href="#" class="support-screen_article_picture">
-                    <img src="./images/image1.png" alt="Международный васюкинский турнир" width="394" height="250" />
+                    <img src="./images/image1.webp" alt="Международный васюкинский турнир" width="394" height="250" />
                 </a>
                 <span>посетите лекцию на&nbsp;тему: <a href="#">«Плодотворная дебютная идея»</a></span>
             </h3>
         </section>
-        <section id="turner" class="turner-screen">
-            <div class="turner-screen_picture">
-                <a href="#" class="turner-screen_picture_conatiner">
-                    <img src="./images/image2.png"
-                     width="529"
-                     height="609"
-                     alt="Сеанс одновременной игры в шахматы на 160 досках гроссмейстера О.Бендера" />
+        <section id="tourney" class="tourney-screen">
+            <div class="tourney-screen_picture">
+                <a href="#" class="tourney-screen_picture_conatiner">
+                    <img src="./images/image2.webp"
+                         width="529"
+                         height="609"
+                         alt="Сеанс одновременной игры в шахматы на 160 досках гроссмейстера О.Бендера" />
                 </a>
             </div>
-            <div class="turner-screen_title">
+            <div class="tourney-screen_title">
                 <h3>И Сеанс
                     <a href="#">одновременной игры в&nbsp;шахматы на&nbsp;160&nbsp;досках</a>
                     гроссмейстера О.&nbsp;Бендера</h3>
             </div>
-            <div class="turner-screen_details">
+            <div class="tourney-screen_details">
                 <table>
                     <tr>
                         <td>Место проведения:</td>
@@ -111,10 +108,100 @@
                     </tr>
                     <tr>
                         <td>Взнос на&nbsp;телеграммы:</td>
-                        <td><strong><del>100 руб.</del> 21 руб. 16&nbsp;коп.</strong></td>
+                        <td>
+                            <strong>
+                                <del>100 руб.</del>
+                                21 руб. 16&nbsp;коп.
+                            </strong>
+                        </td>
                     </tr>
                 </table>
                 <p><a href="#">По&nbsp;всем вопросам обращаться в&nbsp;администрацию к&nbsp;К.&nbsp;Михельсону</a></p>
+            </div>
+        </section>
+        <section id="stages" class="stages-screen">
+            <div class="stages-screen_header">
+                <h2 class="stages-screen_header-item">Этапы преображения Васюков</h2>
+                <p class="stages-screen_header-link"><a href="#">Будущие источники обогащения васюкинцев</a></p>
+            </div>
+
+            <div class="stages-screen_carousel">
+                <div class="stages-screen_carousel-track">
+                    <div class="stages-screen_carousel-slide stages-screen_carousel-slide--double">
+                        <div class="stages-screen_carousel-card">
+                            <span class="stages-screen_carousel-card_num">1</span>
+                            <p class="stages-screen_carousel-card_text">
+                                Строительство железнодорожной магистрали Москва-Васюки
+                            </p>
+                        </div>
+                        <div class="stages-screen_carousel-card">
+                            <span class="stages-screen_carousel-card_num">2</span>
+                            <p class="stages-screen_carousel-card_text">
+                                Открытие фешенебельной гостиницы «Проходная пешка» и&nbsp;других небоскрёбов
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="stages-screen_carousel-slide">
+                        <div class="stages-screen_carousel-card stages-screen_carousel-card--full-height">
+                            <span class="stages-screen_carousel-card_num">3</span>
+                            <p class="stages-screen_carousel-card_text">
+                                Поднятие сельского хозяйства в&nbsp;радиусе на&nbsp;тысячу километров: производство
+                                овощей, фруктов, икры, шоколадных конфет
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="stages-screen_carousel-slide stages-screen_carousel-slide--double">
+                        <div class="stages-screen_carousel-card">
+                            <span class="stages-screen_carousel-card_num">4</span>
+                            <p class="stages-screen_carousel-card_text">
+                                Строительство дворца для&nbsp;турнира
+                            </p>
+                        </div>
+                        <div class="stages-screen_carousel-card">
+                            <span class="stages-screen_carousel-card_num">5</span>
+                            <p class="stages-screen_carousel-card_text">
+                                Размещение гаражей для&nbsp;гостевого автотранспорта
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="stages-screen_carousel-slide">
+                        <div class="stages-screen_carousel-card stages-screen_carousel-card--full-height">
+                            <span class="stages-screen_carousel-card_num">6</span>
+                            <p class="stages-screen_carousel-card_text">
+                                Постройка сверхмощной радиостанции для&nbsp;передачи всему миру сенсационных результатов
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="stages-screen_carousel-slide stages-screen_carousel-slide--plane">
+                        <div class="stages-screen_carousel-card stages-screen_carousel-card--full-height">
+                            <span class="stages-screen_carousel-card_num">7</span>
+                            <p class="stages-screen_carousel-card_text">
+                                Создание аэропорта «Большие Васюки» с&nbsp;регулярным отправлением почтовых самолётов и&nbsp;дирижаблей
+                                во&nbsp;все&nbsp;концы света, включая <nobr>Лос&mdash;Анжелос</nobr> и&nbsp;Мельбурн
+                            </p>
+                            <img src="images/image3.webp" class="stages-screen_carousel-plane" alt="Самолет">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="stages-screen_carousel-controls">
+                    <button type="button" class="btn stages-screen_carousel-controls--prev">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 20" width="12" height="20">
+                            <path stroke="#fff" stroke-linecap="square" stroke-width="2" d="M9.876 18.337 1.414 9.876l8.462-8.462"/>
+                        </svg>
+                    </button>
+                    <div class="stages-screen_carousel-controls--dots"></div>
+                    <button type="button" class="btn stages-screen_carousel-controls--next">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 20" width="12" height="20">
+                            <path stroke="#fff" stroke-linecap="square" stroke-width="2" d="m1.414 1.414 8.462 8.462-8.462 8.461"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </section>
     </div>

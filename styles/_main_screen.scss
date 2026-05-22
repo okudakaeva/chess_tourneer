@@ -1,4 +1,5 @@
 @use "fonts" as f;
+@use "variables" as v;
 
 .main-screen {
   &_branding {
@@ -23,7 +24,7 @@
         padding: 0;
         color: var(--logo-text);
 
-        @media (max-width: 450px) {
+        @media (max-width: #{v.$mobile-portrait}) {
           font-size: 14.42px
         }
       }
@@ -48,7 +49,7 @@
         text-align: center;
       }
 
-      @media (max-width: 1250px) and (min-width: 600px) {
+      @media (max-width: #{v.$screen-medium}) and (min-width: #{v.$tablet-portrait}) {
         text-shadow: 0 0 1px rgba(255, 255, 255,.9);
       }
     }
@@ -57,13 +58,13 @@
       font-size: 18px;
       line-height: 130%;
 
-      @media (max-width: 1250px) and (min-width: 600px) {
+      @media (max-width: #{v.$screen-medium}) and (min-width: #{v.$tablet-portrait}) {
         text-shadow: 0 0 5px var(--button-text);
         background: rgba(255,255,255,.5);
         border-radius: 15px;
       }
     }
-    @media (max-width: 600px) {
+    @media (max-width: #{v.$tablet-portrait}) {
       width: 335px;
       max-width: 100%;
       margin-bottom: 32px;
@@ -85,7 +86,7 @@
   }
 
   .button--light {
-    @media (max-width: 1250px) {
+    @media (max-width: #{v.$screen-medium}) {
       border-color: transparent;
       background-color: rgba(255, 255, 255, .9);
 
@@ -102,7 +103,7 @@
     align-items: center;
     gap: 16px;
 
-    @media (max-width: 600px) {
+    @media (max-width: #{v.$tablet-portrait}) {
       display: block;
     }
   }

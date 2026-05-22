@@ -1,4 +1,5 @@
 @use "fonts" as f;
+@use "variables" as v;
 
 a.button, a.btn, a.button-details {
   text-decoration: none;
@@ -64,7 +65,7 @@ button {
     }
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: #{v.$tablet-portrait}) {
     width: var(--button-width-mobile);
     padding: var(--button-padding-moible);
     margin-bottom: 14px;

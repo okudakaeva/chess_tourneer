@@ -1,3 +1,5 @@
+@use "variables" as v;
+
 .support-screen {
   min-height: 250px;
   display: flex;
@@ -21,7 +23,7 @@
     }
   }
 
-  @media (max-width: 920px) {
+  @media (max-width: #{v.$tablet-landscape}) {
     position: static;
     padding-right: 0;
     min-height: 0;

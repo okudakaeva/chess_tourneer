@@ -1,0 +1,249 @@
+@use "fonts" as f;
+@use "variables" as v;
+
+.stages-screen {
+  margin-bottom: 200px;
+
+  &_header{
+    margin-bottom: 54px;
+    padding-right: 280px;
+    position: relative;
+
+    &-item{
+      display: inline;
+      margin: 0;
+    }
+
+    &-link {
+      display: inline-block;
+      max-width: 280px;
+      margin: 8px 0 8px 36px;
+
+      font-size: var(--base-font-size);
+      text-transform: none;
+      line-height: var(--base-line-height);
+      color: var(--link-text);
+      position: absolute;
+    }
+  }
+
+  @media (max-width: #{v.$tablet-plus-portrait}) {
+    & {
+      margin-bottom: 120px;
+    }
+    &_header{
+      white-space: normal;
+      max-width: 100%;
+      margin-bottom: 128px;
+      padding-right: 0;
+
+      &-item {
+        display: block;
+        margin-bottom: 12px;
+      }
+
+      &-link {
+        display: block;
+        max-width: 100%;
+        margin-left: 0;
+        position: static;
+      }
+    }
+  }
+
+  &_carousel {
+    width: 100%;
+    position: relative;
+
+    &-track {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    &-slide {
+      display: contents;
+
+      &--plane {
+        .stages-screen_carousel-card {
+          position: relative;
+          grid-column: span 2;
+          padding-right: 310px;
+          row-gap: 0;
+        }
+      }
+    }
+
+    &-card {
+      background-image: url("./images/stamp_paper.png");
+      background-color: var(--block-bg);
+      background-blend-mode: normal, normal;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      @supports (background-blend-mode: color-burn) {
+        & {
+          background-image: url('./images/gray_wall.webp'), url("./images/stamp_paper.webp");
+          background-color: var(--block-bg);
+          background-blend-mode: color-burn, normal, normal;
+          background-position: 0 0;
+          background-size: 1920px 881px, cover;
+        }
+      }
+    }
+
+    &-card {
+      padding: 20px;
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      min-height: 136px;
+      box-sizing: border-box;
+
+      &--full-height {
+        grid-row: span 2;
+        height: 100%;
+      }
+
+      &_num {
+        @include f.GolosText(600);
+        display: inline-block;
+        min-width: 36px;
+        height: 36px;
+        line-height: 36px;
+        text-align: center;
+        border-radius: 50%;
+        background-color: var(--button-text);
+      }
+
+      &_text{
+        @include f.GolosText(500);
+        margin: 0;
+      }
+    }
+
+    &-plane {
+      position: absolute;
+      right: -65px;
+      top: -100px;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    &-controls {
+      display: none;
+    }
+  }
+
+  @media (max-width: #{v.$screen-medium}) {
+    &_carousel {
+      position: relative;
+      font-size: 18px;
+
+      &-track {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        gap: 0;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+
+      &-slide {
+        background-image: url("./images/stamp_paper.png");
+        background-color: var(--block-bg);
+        background-blend-mode: normal, normal;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        @supports (background-blend-mode: color-burn) {
+          & {
+            background-image: url('./images/gray_wall.webp'), url("./images/stamp_paper.webp");
+            background-color: var(--block-bg);
+            background-blend-mode: color-burn, normal, normal;
+            background-position: 0 0;
+            background-size: 1920px 881px, cover;
+          }
+        }
+      }
+
+      &-slide {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+        flex-shrink: 0;
+        scroll-snap-align: start;
+        padding: 62px 24px 6px 20px;
+        box-sizing: border-box;
+
+        &--plane {
+          .stages-screen_carousel-card {
+            position: static;
+            padding-right: 0;
+          }
+        }
+
+        &--double {
+          display: flex;
+          flex-direction: column;
+          gap: 0;
+        }
+      }
+
+      &-card {
+        width: 100%;
+        min-height: 0;
+        padding: 0 0 28px;
+        background: none;
+
+        + &-card {
+          padding-bottom: 0;
+        }
+
+        &--full-height {
+          height: auto;
+        }
+      }
+
+      &-plane {
+        max-height: 200px;
+        right: -10px;
+        top: -127px;
+      }
+
+      &-controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        margin-top: 28px;
+
+        &--dots {
+          display: flex;
+          justify-content: stretch;
+          gap: 6px;
+
+          .dot {
+            width: var(--dot-size);
+            height: var(--dot-size);
+            mask-image: var(--icon-bullet);
+            background-color: var(--dot-color);
+            cursor: pointer;
+
+            &--active {
+              background-color: var(--dot-active-color);
+            }
+          }
+        }
+      }
+    }
+  }
+}

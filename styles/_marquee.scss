@@ -1,4 +1,5 @@
 @use "fonts" as f;
+@use "variables" as v;
 
 .marquee {
   @include f.Merriweather();
@@ -37,9 +38,10 @@
       &:after {
         content: "";
         display: inline-block;
-        width: 6px;
-        height: 6px;
-        background: var(--icon-bullet) no-repeat center;
+        width: var(--bullet-size);
+        height: var(--bullet-size);
+        mask-image: var(--icon-bullet);
+        background-color: var(--marquee-text);
       }
     }
   }
@@ -48,7 +50,7 @@
     animation-play-state: paused;
   }
 
-  @media (max-width: 450px) {
+  @media (max-width: #{v.$mobile-portrait}) {
     height: var(--marquee-height-mobile);
     padding: var(--marquee-padding-mobile);
     font-size: var(--marquee-font-size-mobile);
