@@ -1,5 +1,14 @@
 @use "fonts" as f;
 
+html {
+  scroll-behavior: smooth;
+  scroll-margin-top: 30px;
+
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   @include f.GolosText();
   font-size: var(--base-font-size);
@@ -52,6 +61,64 @@ h3 {
 
   @media (max-width: 600px) {
     font-size: 28px;
+  }
+}
+b, strong {
+  @include f.GolosText(700);
+}
+del, s {
+  text-decoration: none;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    border-top: 2px solid var(--header-link-text);
+  }
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 45px;
+
+  tr {
+    border-bottom: 1px solid var(--table-border);
+
+    &:first-child {
+      th, td {
+        padding-top: 0;
+      }
+    }
+
+    &:last-child {
+      border-bottom: 0;
+
+      th, td{
+        padding-bottom: 0;
+      }
+    }
+  }
+  th {
+    @include f.GolosText(700);
+  }
+  th, td {
+    border-left: 1px solid var(--table-border);
+    padding: 16px;
+
+    &:first-child {
+      border-left: 0;
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+
+  @media (max-width: 1250px) {
+    margin-bottom: 40px;
   }
 }
 
@@ -112,6 +179,7 @@ h3 {
       776px 776px,
       660px 660px;
   background-repeat: no-repeat;
+  transition: background-position 0.5s ease-out;
 
   @supports (background-blend-mode: color-burn) {
     & {
@@ -290,7 +358,7 @@ h3 {
       }
     }
   }
-  @media (max-width: 450px) {
+  @media (max-width: 1250px) {
     min-height: var(--header-min-height-mobile);
     padding-top: var(--header-padding-top-mmobile);
   }
