@@ -29,6 +29,9 @@ jobs:
         with:
           node-version: 20
 
+      - name: Установка компилятора Sass
+        run: npm install -g sass
+
       - name: Установка зависимостей сборщика
         run: npm install
 
