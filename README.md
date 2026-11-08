@@ -40,7 +40,9 @@ https://okudakaeva.github.io/chess_tourneer/
     ```bash
     npm run build
     ```
-*Подсказка: если вы планируете изменять стили, запустите режим отслеживания изменений: `npx sass --watch styles.scss:styles.css`*
-
+*Подсказка: если вы планируете изменять стили, запустите режим отслеживания изменений:*
+```bash
+npx sass --watch styles.scss:styles.css
+```
 ---
 *Да здравствует современный веб-стандарт!*
