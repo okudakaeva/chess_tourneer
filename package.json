@@ -1,7 +1,7 @@
 {
   "name": "chess_tourneer",
   "version": "1.0.0",
-  "author": "Oksana Kudakaeva https://github.com/okudakaeva",
+  "author": "Oksana Kudakaeva <https://github.com/okudakaeva>",
   "description": "Адаптивная Pixel-Perfect вёрстка интерактивного лендинга «Клуб четырёх коней» по роману «12 стульев»",
   "license": "Custom Proprietary License (SEE IN LICENSE.md)",
   "repository": {
