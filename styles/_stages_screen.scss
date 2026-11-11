@@ -27,7 +27,7 @@
     }
   }
 
-  @media (max-width: #{v.$tablet-plus-portrait}) {
+  @media (max-width: #{v.$tablet-landscape}) {
     & {
       margin-bottom: 120px;
     }
