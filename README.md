@@ -8,6 +8,7 @@
 https://okudakaeva.github.io/chess_tourneer/
 
 ![Performance](./images/lighthouse_performance.svg) ![Accessibility](./images/lighthouse_accessibility.svg) ![Best Practices](./images/lighthouse_best-practices.svg) ![SEO](./images/lighthouse_seo.svg)
+
 ---
 
 ## 🛠️ Технологический стек и особенности реализации
