@@ -73,12 +73,27 @@ button {
 }
 
 .btn {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
+  width: var(--btn-size);
+  height: var(--btn-size);
+  border-radius: var(--circe);
 
   &:active {
     opacity: .75;
+  }
+
+  &.btn-prev::after,
+  &.btn-next::after{
+    content: '';
+    display: inline-block;
+    width: var(--arrow-width);
+    height: var(--arrow-height);
+  }
+
+  &.btn-prev::after{
+    background-image: var(--icon-arrow-left);
+  }
+  &.btn-next::after{
+    background-image: var(--icon-arrow-right);
   }
 }
 

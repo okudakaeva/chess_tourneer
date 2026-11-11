@@ -2,6 +2,7 @@ $mobile-portrait: 450px;
 $tablet-portrait: 600px;
 $tablet-plus-portrait: 770px;
 $tablet-landscape: 920px;
+$screen-small: 1024px;
 $screen-medium: 1250px;
 
 :root {
@@ -57,14 +58,26 @@ $screen-medium: 1250px;
   --button-details-base: #3057A2;
   --button-details-padding: 6px 12px;
 
+  --btn-size: 44px;
+
   --icon-bullet: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDY2MCA2NjAiPjxjaXJjbGUgY3g9IjMzMCIgY3k9IjMzMCIgcj0iMzMwIi8+PC9zdmc+");
   --bullet-size: 6px;
   --dot-size: 10px;
   --dot-color: #D9D9D9;
   --dot-active-color: #313131;
+
+  --icon-arrow-left: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAxMiAyMCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjIwIj48cGF0aCBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiIHN0cm9rZS13aWR0aD0iMiIgZD0iTTkuODc2IDE4LjMzNyAxLjQxNCA5Ljg3Nmw4LjQ2Mi04LjQ2MiIvPjwvc3ZnPg==");
+  --icon-arrow-right: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAxMiAyMCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjIwIj48cGF0aCBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiIHN0cm9rZS13aWR0aD0iMiIgZD0ibTEuNDE0IDEuNDE0IDguNDYyIDguNDYyLTguNDYyIDguNDYxIi8+PC9zdmc+");
+  --arrow-width: 12px;
+  --arrow-height: 20px;
+  --circe: 50%;
+
   --mobile-portrait: #{$mobile-portrait};
   --tablet-portrait: #{$tablet-portrait};
   --tablet-plus-portrait: #{$tablet-plus-portrait};
   --tablet-landscape: #{$tablet-landscape};
   --screen-medium: #{$screen-medium};
+
+  --participans-header-gap: 60px;
+  --participans-v-gap: 40px;
 }
