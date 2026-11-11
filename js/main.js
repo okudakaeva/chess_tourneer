@@ -25,4 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     handleBreakpointChange(mediaQuery);
     mediaQuery.addEventListener('change', handleBreakpointChange);
+
+    document.querySelectorAll('.marquee-content').forEach((track) => {
+        const items = Array.from(track.children);
+
+        items.forEach((item) => {
+            const clone = item.cloneNode(true);
+            clone.setAttribute('aria-hidden', 'true');
+            track.appendChild(clone);
+        });
+    });
 });
