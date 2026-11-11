@@ -6,7 +6,7 @@ on:
       - main
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -49,3 +49,22 @@ jobs:
       - name: Публикация верстки на GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  lighthouse-audit:
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout исходного кода
+        uses: actions/checkout@v4
+
+      - name: Генерация SVG-датчиков Lighthouse
+        uses: jakejarvis/lighthouse-badge-action@master
+        with:
+          url: ${{ needs.build-and-deploy.outputs.page_url }}
+          output_path: 'images'
+
+      - name: Коммит обновленных датчиков в репозиторий
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: update lighthouse svg gauges [skip ci]'
+          file_pattern: 'images/*.svg'
