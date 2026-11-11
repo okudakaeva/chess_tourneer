@@ -75,7 +75,7 @@
     }
 
     &-card {
-      background-image: url("./images/stamp_paper.png");
+      background-image: url("./images/stamp_paper.webp");
       background-color: var(--block-bg);
       background-blend-mode: normal, normal;
       background-size: cover;
@@ -84,11 +84,11 @@
 
       @supports (background-blend-mode: color-burn) {
         & {
-          background-image: url('./images/gray_wall.webp'), url("./images/stamp_paper.webp");
+          background-image: url('./images/gray_wall_tile.webp'), url("./images/stamp_paper.webp");
           background-color: var(--block-bg);
           background-blend-mode: color-burn, normal, normal;
           background-position: 0 0;
-          background-size: 1920px 881px, cover;
+          background-size: 448px 448px, cover;
         }
       }
     }
@@ -161,7 +161,7 @@
       }
 
       &-slide {
-        background-image: url("./images/stamp_paper.png");
+        background-image: url("./images/stamp_paper.webp");
         background-color: var(--block-bg);
         background-blend-mode: normal, normal;
         background-size: cover;
@@ -170,11 +170,11 @@
 
         @supports (background-blend-mode: color-burn) {
           & {
-            background-image: url('./images/gray_wall.webp'), url("./images/stamp_paper.webp");
+            background-image: url('./images/gray_wall_tile.webp'), url("./images/stamp_paper.webp");
             background-color: var(--block-bg);
             background-blend-mode: color-burn, normal, normal;
             background-position: 0 0;
-            background-size: 1920px 881px, cover;
+            background-size: 448px 448px, cover;
           }
         }
       }

@@ -200,7 +200,7 @@ table {
       background-image:
           url('./images/chess_pawn.webp'),
           url('./images/chess_knight.webp'),
-          url('./images/gray_wall.webp'),
+          url('./images/gray_wall_tile.webp'),
           url("./images/city.webp"),
           url("./images/chess_king.webp"),
           url("./images/chess_queen.webp"),
@@ -218,7 +218,7 @@ table {
       background-size:
           83px 123px,
           179px 197px,
-          1920px 881px,
+          448px 448px,
           1604px 464px,
           130px 266px,
           146px 266px,
@@ -272,7 +272,7 @@ table {
       & {
         background-image:
             url('./images/chess_knight.webp'),
-            url('./images/gray_wall.webp'),
+            url('./images/gray_wall_tile.webp'),
             url("./images/city.webp"),
             url("./images/chess_king.webp"),
             url("./images/chess_queen.webp"),
@@ -288,7 +288,7 @@ table {
             right -26px bottom 84px;
         background-size:
             179px 197px,
-            1920px 881px,
+            448px 448px,
             1604px 464px,
             130px 266px,
             146px 266px,

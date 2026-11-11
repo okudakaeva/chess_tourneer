@@ -4,16 +4,23 @@
     <title>Клуб четырех коней</title>
     <link rel="stylesheet" href="./styles.css"/>
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Превратите уездный город в столицу земного шара" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&family=Merriweather:opsz,wght@18..144,300..900&display=swap"
-          rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Превратите уездный город в столицу земного шара"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link rel="preload" as="style"
+          href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Merriweather:opsz,wght@18,300&display=swap"/>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Merriweather:opsz,wght@18,300&display=swap"
+          media="print" onload="this.media='all'"/>
+    <noscript>
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Merriweather:opsz,wght@18,300&display=swap"/>
+    </noscript>
 
-    <link rel="mask-icon" href="./favicon.svg" color="#595653" />
-    <link rel="icon" href="./favicon.svg" />
-    <link rel="preload" href="./images/gray_wall.webp" as="image" type="image/webp" fetchpriority="high">
+    <link rel="mask-icon" href="./favicon.svg" color="#595653"/>
+    <link rel="icon" href="./favicon.svg"/>
+    <link rel="preload" as="image" href="./images/gray_wall_tile.webp" type="image/webp" fetchpriority="high">
     <script src="./js/stages-carousel.js" type="module"></script>
     <script src="./js/main.js" type="module"></script>
 </head>
@@ -26,7 +33,7 @@
                     <img class="main-screen_branding_item_logo"
                          src="./images/logo.svg"
                          alt="Клуб четырех коней"
-                         width="92" height="32" />
+                         width="92" height="32"/>
                 </a>
             </figure>
             <div class="main-screen_branding_item">
@@ -71,7 +78,8 @@
                 <a href="#" class="support-screen_article_picture">
                     <img src="./images/image1.webp"
                          alt="Международный васюкинский турнир"
-                         width="394" height="250" />
+                         width="394" height="250"
+                         loading="lazy" decoding="async"/>
                 </a>
                 <span>посетите лекцию на&nbsp;тему: <a href="#">«Плодотворная дебютная идея»</a></span>
             </h3>
@@ -80,9 +88,9 @@
             <figure class="tourney-screen_picture">
                 <a href="#" class="tourney-screen_picture_conatiner">
                     <img src="./images/image2.webp"
-                         width="529"
-                         height="609"
-                         alt="Сеанс одновременной игры в шахматы на 160 досках гроссмейстера О.Бендера" />
+                         width="529" height="609"
+                         alt="Сеанс одновременной игры в шахматы на 160 досках гроссмейстера О.Бендера"
+                         loading="lazy" decoding="async"/>
                 </a>
             </figure>
             <div class="tourney-screen_title">
@@ -183,15 +191,18 @@
                             <dt class="stages-screen_carousel-card_num">7</dt>
                             <dd class="stages-screen_carousel-card_text">
                                 Создание аэропорта «Большие Васюки» с&nbsp;регулярным отправлением почтовых самолётов и&nbsp;дирижаблей
-                                во&nbsp;все&nbsp;концы света, включая <nobr>Лос&mdash;Анжелос</nobr> и&nbsp;Мельбурн
+                                во&nbsp;все&nbsp;концы света, включая
+                                <nobr>Лос&mdash;Анжелос</nobr>
+                                и&nbsp;Мельбурн
                             </dd>
                         </div>
                     </dl>
                 </div>
                 <figure class="stages-screen_carousel-plane">
                     <img src="images/image3.webp"
-                     alt="Самолет"
-                     width="401" height="235" />
+                         alt="Самолет"
+                         width="401" height="235"
+                         loading="lazy" decoding="async"/>
                 </figure>
                 <div class="stages-screen_carousel-controls">
                     <button
@@ -214,7 +225,8 @@
                         <figure class="participant_avatar">
                             <img src="./images/participant.webp"
                                  alt="Хозе-Рауль Капабланка. Чемпион мира по шахматам"
-                                 width="293" height="334" />
+                                 width="293" height="334"
+                                 loading="lazy" decoding="async"/>
                         </figure>
                         <h4 class="participant_name">Хозе-Рауль Капабланка</h4>
                         <p class="participant_bio">Чемпион мира по шахматам</p>
@@ -224,7 +236,8 @@
                         <figure class="participant_avatar">
                             <img src="./images/participant.webp"
                                  alt="Эммануил Ласкер. Чемпион мира по шахматам"
-                                 width="293" height="334" />
+                                 width="293" height="334"
+                                 loading="lazy" decoding="async"/>
                         </figure>
                         <h4 class="participant_name">Эммануил Ласкер</h4>
                         <p class="participant_bio">Чемпион мира по шахматам</p>
@@ -234,7 +247,8 @@
                         <figure class="participant_avatar">
                             <img src="./images/participant.webp"
                                  alt="Александр Алехин. Чемпион мира по шахматам"
-                                 width="293" height="334" />
+                                 width="293" height="334"
+                                 loading="lazy" decoding="async"/>
                         </figure>
                         <h4 class="participant_name">Александр Алехин</h4>
                         <p class="participant_bio">Чемпион мира по шахматам</p>
@@ -244,7 +258,8 @@
                         <figure class="participant_avatar">
                             <img src="./images/participant.webp"
                                  alt="Арон Нимцович. Чемпион мира по шахматам"
-                                 width="293" height="334" />
+                                 width="293" height="334"
+                                 loading="lazy" decoding="async"/>
                         </figure>
                         <h4 class="participant_name">Арон Нимцович</h4>
                         <p class="participant_bio">Чемпион мира по шахматам</p>
@@ -254,7 +269,8 @@
                         <figure class="participant_avatar">
                             <img src="./images/participant.webp"
                                  alt="Рихард Рети. Чемпион мира по шахматам"
-                                 width="293" height="334" />
+                                 width="293" height="334"
+                                 loading="lazy" decoding="async"/>
                         </figure>
                         <h4 class="participant_name">Рихард Рети</h4>
                         <p class="participant_bio">Чемпион мира по шахматам</p>
@@ -264,7 +280,8 @@
                         <figure class="participant_avatar">
                             <img src="./images/participant.webp"
                                  alt="Остап Бендер. Гроссмейстер"
-                                 width="293" height="334" />
+                                 width="293" height="334"
+                                 loading="lazy" decoding="async"/>
                         </figure>
                         <h4 class="participant_name">Остап Бендер</h4>
                         <p class="participant_bio">Гроссмейстер</p>
