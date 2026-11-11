@@ -12,11 +12,9 @@ export class Carousel {
     #intersect = null;
     #resizeObserver = null;
     #breakpointQueries = [];
-    #autoplay = null;
+    #autoplayAbort = null;
     #isInitialized = false;
-    #isScroll = false;
-    #scrollTimeout = null;
-    #ignoreInitialObserver = true;
+    #isProgrammaticScroll = false;
     #lastTrackWidth = 0;
 
     #options = {
@@ -66,19 +64,13 @@ export class Carousel {
         this.#breakpointQueries = this.#options.breakpoints.map((bp) => {
             const mql = window.matchMedia(bp.query);
             mql.addEventListener('change', this.#evaluateState);
-
             return { mql, visibleCount: bp.visibleCount };
         });
     }
 
     #calculateVisibleCount () {
-        for (const item of this.#breakpointQueries) {
-            if (item.mql.matches) {
-                return item.visibleCount;
-            }
-        }
-
-        return this.#options.defaultVisibleCount;
+        const matched = this.#breakpointQueries.find((item) => item.mql.matches);
+        return matched ? matched.visibleCount : this.#options.defaultVisibleCount;
     }
 
     #evaluateState = () => {
@@ -98,12 +90,7 @@ export class Carousel {
     };
 
     #init () {
-        if (this.#isInitialized) {
-            return;
-        }
-
         this.#isInitialized = true;
-        this.#ignoreInitialObserver = true;
         this.#index = 0;
         this.#lastTrackWidth = this.#track.offsetWidth;
         this.#track.scrollTo({ left: 0, behavior: 'instant' });
@@ -122,8 +109,7 @@ export class Carousel {
 
         this.#isInitialized = false;
         this.#stopAutoplay();
-        clearTimeout(this.#scrollTimeout);
-        this.#isScroll = false;
+        this.#isProgrammaticScroll = false;
 
         if (this.#intersect) {
             this.#intersect.disconnect();
@@ -137,8 +123,10 @@ export class Carousel {
 
         this.#prevBtn?.removeEventListener('click', this.#handlePrev);
         this.#nextBtn?.removeEventListener('click', this.#handleNext);
+        this.#track.removeEventListener('scrollend', this.#onScrollEnd);
         this.#root.removeEventListener('mouseenter', this.#stopAutoplay);
         this.#root.removeEventListener('mouseleave', this.#startAutoplay);
+        document.removeEventListener('visibilitychange', this.#handleVisibility);
 
         this.#dots.forEach((dot) => {
             dot.removeEventListener('click', dot._clickHandler);
@@ -152,6 +140,7 @@ export class Carousel {
     #bindEvents () {
         this.#prevBtn?.addEventListener('click', this.#handlePrev);
         this.#nextBtn?.addEventListener('click', this.#handleNext);
+        this.#track.addEventListener('scrollend', this.#onScrollEnd);
 
         this.#dots.forEach((dot, index) => {
             dot._clickHandler = () => this.goTo(index);
@@ -161,8 +150,13 @@ export class Carousel {
         if (this.#options.autoplay > 0) {
             this.#root.addEventListener('mouseenter', this.#stopAutoplay);
             this.#root.addEventListener('mouseleave', this.#startAutoplay);
+            document.addEventListener('visibilitychange', this.#handleVisibility);
         }
     }
+
+    #handleVisibility = () => {
+        document.hidden ? this.#stopAutoplay() : this.#startAutoplay();
+    };
 
     #setupResizeObserver () {
         this.#resizeObserver = new ResizeObserver((entries) => {
@@ -174,16 +168,13 @@ export class Carousel {
 
             this.#lastTrackWidth = newWidth;
 
-            this.#isScroll = true;
-            clearTimeout(this.#scrollTimeout);
-            this.#scrollTimeout = setTimeout(this.#onScrollEnd, 150);
-
             if (this.#options.autoplay <= 0) {
                 this.#index = 0;
                 this.#track.scrollTo({ left: 0, behavior: 'instant' });
                 this.#updateUI();
             } else {
                 const currentSlide = this.#slides[this.#index];
+
                 if (currentSlide) {
                     this.#track.scrollTo({ left: currentSlide.offsetLeft, behavior: 'instant' });
                 }
@@ -196,12 +187,7 @@ export class Carousel {
     #setupObserver () {
         this.#intersect = new IntersectionObserver(
                 (entries) => {
-                    if (this.#ignoreInitialObserver) {
-                        this.#ignoreInitialObserver = false;
-                        return;
-                    }
-
-                    if (this.#isScroll) {
+                    if (this.#isProgrammaticScroll) {
                         return;
                     }
 
@@ -213,16 +199,12 @@ export class Carousel {
                     if (visibleIndexes.length > 0) {
                         const firstVisibleIndex = Math.min(...visibleIndexes);
                         if (firstVisibleIndex !== this.#index) {
-                            const maxIndex = this.#getMaxIndex();
-                            this.#index = Math.min(firstVisibleIndex, maxIndex);
+                            this.#index = Math.min(firstVisibleIndex, this.#getMaxIndex());
                             this.#updateUI();
                         }
                     }
                 },
-                {
-                    root: this.#track,
-                    threshold: 0.6,
-                }
+                { root: this.#track, threshold: 0.6 }
         );
 
         this.#slides.forEach((slide) => this.#intersect.observe(slide));
@@ -232,13 +214,20 @@ export class Carousel {
         return Math.max(0, this.#slides.length - this.#visibleCount);
     }
 
-    #getStep () {
-        return this.#options.stepByVisible ? this.#visibleCount : 1;
+    #getNextIndex () {
+        const maxIndex = this.#getMaxIndex();
+        const step = this.#options.stepByVisible ? this.#visibleCount : 1;
+
+        if (this.#index < maxIndex) {
+            return Math.min(maxIndex, this.#index + step);
+        }
+
+        return this.#options.loop ? 0 : null;
     }
 
     #handlePrev = () => {
         const maxIndex = this.#getMaxIndex();
-        const step = this.#getStep();
+        const step = this.#options.stepByVisible ? this.#visibleCount : 1;
 
         if (this.#index > 0) {
             this.goTo(Math.max(0, this.#index - step));
@@ -248,13 +237,9 @@ export class Carousel {
     };
 
     #handleNext = () => {
-        const maxIndex = this.#getMaxIndex();
-        const step = this.#getStep();
-
-        if (this.#index < maxIndex) {
-            this.goTo(Math.min(maxIndex, this.#index + step));
-        } else if (this.#options.loop) {
-            this.goTo(0);
+        const nextIndex = this.#getNextIndex();
+        if (nextIndex !== null) {
+            this.goTo(nextIndex);
         }
     };
 
@@ -266,11 +251,9 @@ export class Carousel {
             if (this.#nextBtn) this.#nextBtn.disabled = this.#index >= maxIndex;
         }
 
-        if (this.#dots.length) {
-            this.#dots.forEach((dot, idx) => {
-                dot.classList.toggle(this.#options.dotActive, idx === this.#index);
-            });
-        }
+        this.#dots.forEach((dot, idx) => {
+            dot.classList.toggle(this.#options.dotActive, idx === this.#index);
+        });
 
         if (this.#counter && this.#counterTotal) {
             this.#counter.textContent = Math.min(this.#index + this.#visibleCount, this.#slides.length);
@@ -278,8 +261,34 @@ export class Carousel {
         }
     }
 
+    #delay (ms, signal) {
+        return new Promise((resolve) => {
+            if (signal.aborted) {
+                return resolve(false);
+            }
+
+            const timerId = setTimeout(() => resolve(true), ms);
+            signal.addEventListener('abort', () => {
+                clearTimeout(timerId);
+                resolve(false);
+            }, { once: true });
+        });
+    }
+
+    async* #autoplayStream (signal) {
+        while (await this.#delay(this.#options.autoplay, signal)) {
+            const nextIndex = this.#getNextIndex();
+
+            if (nextIndex === null) {
+                return;
+            }
+
+            yield nextIndex;
+        }
+    }
+
     #startAutoplay = () => {
-        if (this.#options.autoplay <= 0 || this.#autoplay) {
+        if (this.#options.autoplay <= 0 || this.#autoplayAbort) {
             return;
         }
 
@@ -287,21 +296,23 @@ export class Carousel {
             return;
         }
 
-        this.#autoplay = setInterval(() => {
-            this.#handleNext();
-        }, this.#options.autoplay);
+        const controller = new AbortController();
+        this.#autoplayAbort = controller;
+
+        void (async () => {
+            for await (const nextIndex of this.#autoplayStream(controller.signal)) {
+                this.goTo(nextIndex);
+            }
+        })();
     };
 
     #stopAutoplay = () => {
-        if (this.#autoplay) {
-            clearInterval(this.#autoplay);
-            this.#autoplay = null;
-        }
+        this.#autoplayAbort?.abort();
+        this.#autoplayAbort = null;
     };
 
     #onScrollEnd = () => {
-        this.#isScroll = false;
-        clearTimeout(this.#scrollTimeout);
+        this.#isProgrammaticScroll = false;
     };
 
     goTo (index) {
@@ -309,18 +320,14 @@ export class Carousel {
             return;
         }
 
-        const maxIndex = this.#getMaxIndex();
-        const targetIndex = Math.max(0, Math.min(index, maxIndex));
+        const targetIndex = Math.max(0, Math.min(index, this.#getMaxIndex()));
         const targetSlide = this.#slides[targetIndex];
 
         if (!targetSlide) {
             return;
         }
 
-        this.#isScroll = true;
-        clearTimeout(this.#scrollTimeout);
-        this.#scrollTimeout = setTimeout(this.#onScrollEnd, 800);
-
+        this.#isProgrammaticScroll = true;
         this.#index = targetIndex;
         this.#track.scrollTo({
             left: targetSlide.offsetLeft,
