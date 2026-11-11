@@ -106,3 +106,4 @@ jobs:
           commit_message: 'chore: update lighthouse svg gauges [skip ci]'
           file_pattern: 'images/lighthouse_*.svg'
           branch: badges
+          push_options: '--force'
