@@ -78,6 +78,11 @@ $screen-medium: 1250px;
   --tablet-landscape: #{$tablet-landscape};
   --screen-medium: #{$screen-medium};
 
+  --main-top-gap: 80px;
+  --main-top-gap--mobile: 48px;
+  --main-bottom-gap: 140px;
+  --main-bottom-gap--mobile: 100px;
+
   --participans-header-gap: 60px;
   --participans-v-gap: 40px;
 }
