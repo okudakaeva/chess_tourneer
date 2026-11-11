@@ -1,5 +1,6 @@
 @use "fonts" as f;
 @use "variables" as v;
+@use "parallax_mixin" as p;
 
 html {
   scroll-behavior: smooth;
@@ -131,6 +132,11 @@ table {
   }
 }
 
+figure {
+  margin: 0;
+  padding: 0;
+}
+
 .main {
   padding-top: var(--main-top-gap);
   padding-bottom: var(--main-bottom-gap);
@@ -141,11 +147,8 @@ table {
   }
 }
 
-.header, .footer {
-  background-color: var(--base-bg);
-}
-
 .footer {
+  background-color: var(--base-bg);
   box-sizing: border-box;
   min-height: var(--footer-min-height);
   padding: var(--footer-padding);
@@ -169,213 +172,6 @@ table {
   min-height: var(--header-min-height);
   padding-top: var(--header-padding-top);
   padding-bottom: var(--header-padding-bottom);
-  background-image:
-      url("./images/chess_pawn.png"),
-      url("./images/chess_knight.png"),
-      url("../images/city.png"),
-      url("./images/chess_king.png"),
-      url("./images/chess_queen.png"),
-      url("./images/mars-signals.svg"),
-      url("./images/ellipse.svg");
-  background-position:
-      right calc(50% - 600px) bottom 18px,
-      right calc(50% - 254px) bottom,
-      center bottom -23px,
-      right calc(50% - 100px) bottom 164px,
-      right calc(50% - 440px) bottom 268px,
-      right calc(50% - 320px) bottom 26px,
-      right calc(50% - 320px) bottom 84px;
-  background-size: 83px 123px,
-      179px 197px,
-      1604px 464px,
-      130px 266px,
-      146px 266px,
-      776px 776px,
-      660px 660px;
-  background-repeat: no-repeat;
-  transition: background-position 0.5s ease-out;
-
-  @supports (background-blend-mode: color-burn) {
-    & {
-      background-image:
-          url('./images/chess_pawn.webp'),
-          url('./images/chess_knight.webp'),
-          url('./images/gray_wall_tile.webp'),
-          url("./images/city.webp"),
-          url("./images/chess_king.webp"),
-          url("./images/chess_queen.webp"),
-          url("./images/mars-signals.svg"),
-          url("./images/ellipse.svg");
-      background-position:
-          right calc(50% - 600px) bottom 18px,
-          right calc(50% - 254px) bottom,
-          center bottom,
-          center bottom -23px,
-          right calc(50% - 100px) bottom 164px,
-          right calc(50% - 440px) bottom 268px,
-          right calc(50% - 320px) bottom 26px,
-          right calc(50% - 320px) bottom 84px;
-      background-size:
-          83px 123px,
-          179px 197px,
-          448px 448px,
-          1604px 464px,
-          130px 266px,
-          146px 266px,
-          776px 776px,
-          660px 660px;
-      background-blend-mode:
-          normal,
-          normal,
-          color-burn,
-          normal,
-          normal,
-          normal,
-          overlay,
-          normal;
-      background-repeat:
-          no-repeat,
-          no-repeat,
-          repeat,
-          no-repeat,
-          no-repeat,
-          no-repeat,
-          no-repeat,
-          no-repeat;
-    }
-  }
-  @media (max-width: #{v.$screen-medium}) {
-    background-image:
-        url("./images/chess_knight.png"),
-        url("../images/city.png"),
-        url("./images/chess_king.png"),
-        url("./images/chess_queen.png"),
-        url("./images/mars-signals.svg"),
-        url("./images/ellipse.svg");
-    background-position:
-        right 293px bottom,
-        right -177px bottom -23px,
-        right 460px bottom 164px,
-        right 110px bottom 268px,
-        right -84px bottom 26px,
-        right -26px bottom 84px;
-    background-size:
-        179px 197px,
-        1604px 464px,
-        130px 266px,
-        146px 266px,
-        776px 776px,
-        660px 660px;
-    background-repeat: no-repeat;
-
-    @supports (background-blend-mode: color-burn) {
-      & {
-        background-image:
-            url('./images/chess_knight.webp'),
-            url('./images/gray_wall_tile.webp'),
-            url("./images/city.webp"),
-            url("./images/chess_king.webp"),
-            url("./images/chess_queen.webp"),
-            url("./images/mars-signals.svg"),
-            url("./images/ellipse.svg");
-        background-position:
-            right 293px bottom,
-            center bottom,
-            right -177px bottom -23px,
-            right 460px bottom 164px,
-            right 110px bottom 268px,
-            right -84px bottom 26px,
-            right -26px bottom 84px;
-        background-size:
-            179px 197px,
-            448px 448px,
-            1604px 464px,
-            130px 266px,
-            146px 266px,
-            776px 776px,
-            660px 660px;
-        background-blend-mode:
-            normal,
-            color-burn,
-            normal,
-            normal,
-            normal,
-            overlay,
-            normal;
-        background-repeat:
-            no-repeat,
-            repeat,
-            no-repeat,
-            no-repeat,
-            no-repeat,
-            no-repeat,
-            no-repeat;
-      }
-    }
-  }
-
-  @media (max-width: #{v.$tablet-plus-portrait}) {
-    background-position:
-        center bottom,
-        right -177px bottom -23px,
-        right 460px bottom 164px,
-        right 110px bottom 268px,
-        right -84px bottom 26px,
-        right -26px bottom 84px;
-
-    @supports (background-blend-mode: color-burn) {
-      & {
-        background-position:
-            center bottom,
-            center bottom,
-            right -177px bottom -23px,
-            right 460px bottom 164px,
-            right 110px bottom 268px,
-            right -84px bottom 26px,
-            right -26px bottom 84px;
-      }
-    }
-  }
-
-  @media (max-width: #{v.$tablet-portrait}) {
-    background-position:
-        center bottom,
-        right -95px bottom -11px,
-        right 250px bottom 110px,
-        right 80px bottom 154px,
-        center bottom 26px,
-        center bottom 55px;
-    background-size:
-        89px 98px,
-        880px 255px,
-        65px 133px,
-        73px 133px,
-        388px 388px,
-        330px 330px;
-
-    @supports (background-blend-mode: color-burn) {
-      & {
-        background-position:
-            center bottom,
-            center bottom,
-            right -95px bottom -11px,
-            right 250px bottom 110px,
-            right 80px bottom 154px,
-            center bottom 26px,
-            center bottom 55px;
-        background-size:
-            89px 98px,
-            960px 440px,
-            880px 255px,
-            65px 133px,
-            73px 133px,
-            388px 388px,
-            330px 330px;
-      }
-    }
-  }
-  @media (max-width: #{v.$screen-medium}) {
-    min-height: var(--header-min-height-mobile);
-    padding-top: var(--header-padding-top-mmobile);
-  }
+  @include p.parallax;
+  @include p.parallax-start;
 }

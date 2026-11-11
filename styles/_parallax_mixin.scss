@@ -1,0 +1,235 @@
+@use "sass:map";
+@use "sass:list";
+@use "variables" as v;
+$layers: (
+        pawn: (
+                img: url("./images/chess_pawn.webp"),
+                pos: right calc(50% - 600px) bottom 18px,
+                start-pos: right calc(50% - 950px) bottom 18px,
+                size: 83px 123px,
+                blend: normal,
+                repeat: no-repeat
+        ),
+        knight: (
+                img: url("./images/chess_knight.webp"),
+                pos: right calc(50% - 254px) bottom,
+                start-pos: right calc(50% + 250px) bottom,
+                size: 179px 197px,
+                blend: normal,
+                repeat: no-repeat
+        ),
+        wall: (
+                img: url("./images/gray_wall_tile.webp"),
+                pos: center bottom,
+                size: 448px 448px,
+                blend: color-burn,
+                repeat: repeat
+        ),
+        city: (
+                img: url("./images/city.webp"),
+                pos: center bottom -23px,
+                start-pos: center bottom -180px,
+                size: 1604px 464px,
+                blend: normal,
+                repeat: no-repeat
+        ),
+        king: (
+                img: url("./images/chess_king.webp"),
+                pos: right calc(50% - 100px) bottom 164px,
+                start-pos: right calc(50% - 100px) bottom 60px,
+                size: 130px 266px,
+                blend: normal,
+                repeat: no-repeat
+        ),
+        queen: (
+                img: url("./images/chess_queen.webp"),
+                pos: right calc(50% - 440px) bottom 268px,
+                start-pos: right calc(50% - 440px) bottom 140px,
+                size: 146px 266px,
+                blend: normal,
+                repeat: no-repeat
+        ),
+        signals: (
+                img: url("./images/mars-signals.svg"),
+                pos: right calc(50% - 320px) bottom 26px,
+                start-pos: right calc(50% - 650px) bottom 26px,
+                size: 777px 777px,
+                blend: overlay,
+                repeat: no-repeat
+        ),
+        ellipse: (
+                img: url("./images/ellipse.svg"),
+                pos: right calc(50% - 320px) bottom 84px,
+                start-pos: right calc(50% - 650px) bottom 84px,
+                size: 660px 660px,
+                blend: normal,
+                repeat: no-repeat
+        ),
+);
+
+@mixin render-layers($keys, $overrides: (), $full: true, $is-start: false) {
+  $images: ();
+  $positions: ();
+  $sizes: ();
+  $blends: ();
+  $repeats: ();
+
+  @each $key in $keys {
+    $base: map.get($layers, $key);
+    $custom: if(map.has-key($overrides, $key), map.get($overrides, $key), ());
+    $item: map.merge($base, $custom);
+
+    $images: list.append($images, map.get($item, img), comma);
+
+    $current-pos: if($is-start and map.has-key($item, start-pos), map.get($item, start-pos), map.get($item, pos));
+    $positions: list.append($positions, $current-pos, comma);
+
+    $sizes: list.append($sizes, map.get($item, size), comma);
+    $blends: list.append($blends, map.get($item, blend), comma);
+    $repeats: list.append($repeats, map.get($item, repeat), comma);
+  }
+
+  @if $full and not $is-start {
+    background-image: $images;
+    background-size: $sizes;
+    background-repeat: $repeats;
+  }
+  background-position: $positions;
+
+  @if $full and not $is-start and list.index($blends, color-burn) != null {
+    background-blend-mode: $blends;
+  }
+}
+
+@mixin parallax {
+  background-color: var(--base-bg);
+  @include render-layers((pawn, knight, city, king, queen, signals, ellipse));
+
+  @supports (background-blend-mode: color-burn) {
+    @include render-layers((pawn, knight, wall, city, king, queen, signals, ellipse));
+  }
+
+  @media (max-width: #{v.$screen-medium}) {
+    $med: (
+            knight: (pos: right 293px bottom),
+            city: (pos: right -177px bottom -23px),
+            king: (pos: right 460px bottom 164px),
+            queen: (pos: right 110px bottom 268px),
+            signals: (pos: right -84px bottom 26px),
+            ellipse: (pos: right -26px bottom 84px)
+    );
+
+    @include render-layers((knight, city, king, queen, signals, ellipse), $med);
+
+    @supports (background-blend-mode: color-burn) {
+      @include render-layers((knight, wall, city, king, queen, signals, ellipse), $med);
+    }
+  }
+
+  @media (max-width: #{v.$tablet-plus-portrait}) {
+    $tab-plus: (
+            knight: (pos: right calc(50% - 89.5px) bottom),
+            city: (pos: right -177px bottom -23px),
+            king: (pos: right 460px bottom 164px),
+            queen: (pos: right 110px bottom 268px),
+            signals: (pos: right -84px bottom 26px),
+            ellipse: (pos: right -26px bottom 84px)
+    );
+
+    @include render-layers((knight, city, king, queen, signals, ellipse), $tab-plus, $full: false);
+
+    @supports (background-blend-mode: color-burn) {
+      @include render-layers((knight, wall, city, king, queen, signals, ellipse), $tab-plus, $full: false);
+    }
+  }
+
+  @media (max-width: #{v.$tablet-portrait}) {
+    $mob: (
+            knight: (pos: right calc(50% - 44.5px) bottom, size: 89px 98px),
+            wall: (pos: center bottom, size: 224px 224px),
+            city: (pos: right -95px bottom -11px, size: 880px 255px),
+            king: (pos: right 250px bottom 110px, size: 65px 133px),
+            queen: (pos: right 80px bottom 154px, size: 73px 133px),
+            signals: (pos: center bottom 26px, size: 388px 388px),
+            ellipse: (pos: center bottom 55px, size: 330px 330px)
+    );
+
+    @include render-layers((knight, city, king, queen, signals, ellipse), $mob);
+
+    @supports (background-blend-mode: color-burn) {
+      @include render-layers((knight, wall, city, king, queen, signals, ellipse), $mob);
+    }
+  }
+}
+
+@mixin parallax-start {
+  @media (prefers-reduced-motion: no-preference) {
+    transition: background-position 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+
+    @starting-style {
+      @include render-layers((pawn, knight, city, king, queen, signals, ellipse), $is-start: true);
+
+      @supports (background-blend-mode: color-burn) {
+        @include render-layers((pawn, knight, wall, city, king, queen, signals, ellipse), $is-start: true);
+      }
+    }
+
+    @media (max-width: #{v.$screen-medium}) {
+      $med-start: (
+              knight: (start-pos: right 293px bottom -200px),
+              city: (start-pos: right -177px bottom -160px),
+              king: (start-pos: right 460px bottom 60px),
+              queen: (start-pos: right 110px bottom 140px),
+              signals: (start-pos: right -450px bottom 26px),
+              ellipse: (start-pos: right -380px bottom 84px)
+      );
+
+      @starting-style {
+        @include render-layers((knight, city, king, queen, signals, ellipse), $med-start, $is-start: true);
+
+        @supports (background-blend-mode: color-burn) {
+          @include render-layers((knight, wall, city, king, queen, signals, ellipse), $med-start, $is-start: true);
+        }
+      }
+    }
+
+    @media (max-width: #{v.$tablet-plus-portrait}) {
+      $tab-plus-start: (
+              knight: (start-pos: center bottom -200px),
+              city: (start-pos: right -177px bottom -160px),
+              king: (start-pos: right 460px bottom 60px),
+              queen: (start-pos: right 110px bottom 140px),
+              signals: (start-pos: right -450px bottom 26px),
+              ellipse: (start-pos: right -380px bottom 84px)
+      );
+
+      @starting-style {
+        @include render-layers((knight, city, king, queen, signals, ellipse), $tab-plus-start, $is-start: true);
+
+        @supports (background-blend-mode: color-burn) {
+          @include render-layers((knight, wall, city, king, queen, signals, ellipse), $tab-plus-start, $is-start: true);
+        }
+      }
+    }
+
+    @media (max-width: #{v.$tablet-portrait}) {
+      $mob-start: (
+              knight: (start-pos: center bottom -100px),
+              city: (start-pos: right -95px bottom -100px),
+              king: (start-pos: right 250px bottom 30px),
+              queen: (start-pos: right 80px bottom 70px),
+              signals: (start-pos: right -350px bottom 26px),
+              ellipse: (start-pos: right -300px bottom 55px)
+      );
+
+      @starting-style {
+        @include render-layers((knight, city, king, queen, signals, ellipse), $mob-start, $is-start: true);
+
+        @supports (background-blend-mode: color-burn) {
+          @include render-layers((knight, wall, city, king, queen, signals, ellipse), $mob-start, $is-start: true);
+        }
+      }
+    }
+  }
+}
+
