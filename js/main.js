@@ -1,38 +1,66 @@
-import { StagesCarousel } from './stages-carousel.js';
+import { Carousel } from './carousel.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const carousel = new StagesCarousel('.stages-screen_carousel', {
-        root: '.stages-screen_carousel-track',
-        slides: '.stages-screen_carousel-slide',
-        prevBtn: '.stages-screen_carousel-controls--prev',
-        nextBtn: '.stages-screen_carousel-controls--next',
-        dots: '.stages-screen_carousel-controls--dots',
-        dot: 'dot',
-        dotActive: 'dot--active',
-    });
-
     const rootStyles = getComputedStyle(document.documentElement);
-    const scrennMediumSize = rootStyles.getPropertyValue('--screen-medium').trim();
-    const mediaQuery = window.matchMedia(`(max-width: ${scrennMediumSize})`);
+    const screenMinSize = rootStyles.getPropertyValue('--tablet-plus-portrait').trim();
+    const screenMidSize = rootStyles.getPropertyValue('--screen-small').trim();
+    const screenBigSize = rootStyles.getPropertyValue('--screen-medium').trim();
 
-    const handleBreakpointChange = (event) => {
-        if (event.matches) {
-            carousel.init();
-        } else {
-            carousel.destroy();
-        }
+    document.querySelectorAll('.marquee-content')
+            .forEach((track) => {
+                const items = Array.from(track.children);
+                items.forEach((item) => {
+                    const clone = item.cloneNode(true);
+                    clone.setAttribute('aria-hidden', 'true');
+                    track.appendChild(clone);
+                });
+            });
+
+    const stagesCarouselOpts = {
+        trackSelector: '.stages-screen_carousel-track',
+        slideSelector: '.stages-screen_carousel-slide',
+        prevSelector: '.stages-screen_carousel-controls--prev',
+        nextSelector: '.stages-screen_carousel-controls--next',
+        dotsSelector: '.dot',
+        dotActive: 'dot--active',
+        defaultVisibleCount: 0,
+        breakpoints: [
+            { query: `(max-width: ${screenBigSize})`, visibleCount: 1 }
+        ],
+        loop: false
     };
 
-    handleBreakpointChange(mediaQuery);
-    mediaQuery.addEventListener('change', handleBreakpointChange);
+    const fragment = document.createDocumentFragment();
 
-    document.querySelectorAll('.marquee-content').forEach((track) => {
-        const items = Array.from(track.children);
+    document.querySelectorAll(stagesCarouselOpts.slideSelector)
+            .forEach((_, index) => {
+                const dot = document.createElement('span');
+                dot.classList.add(stagesCarouselOpts.dotsSelector.split('.')[1]);
 
-        items.forEach((item) => {
-            const clone = item.cloneNode(true);
-            clone.setAttribute('aria-hidden', 'true');
-            track.appendChild(clone);
-        });
+                if (index === 0) {
+                    dot.classList.add(stagesCarouselOpts.dotActive);
+                }
+
+                fragment.appendChild(dot);
+            });
+
+    document.querySelector('.stages-screen_carousel-controls--dots')
+            .appendChild(fragment);
+
+    new Carousel('.stages-screen_carousel', stagesCarouselOpts);
+
+    new Carousel('.participants-screen_carousel', {
+        trackSelector: '.participants-screen_carousel-track',
+        slideSelector: '.participants-screen_carousel-card',
+        prevSelector: '.participants-screen_carousel-controls--prev',
+        nextSelector: '.participants-screen_carousel-controls--next',
+        loop: true,
+        autoplay: 4000,
+        stepByVisible: true,
+        defaultVisibleCount: 3,
+        breakpoints: [
+            { query: `(max-width: ${screenMinSize})`, visibleCount: 1 },
+            { query: `(max-width: ${screenMidSize})`, visibleCount: 2 }
+        ]
     });
 });

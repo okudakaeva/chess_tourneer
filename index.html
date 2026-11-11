@@ -21,7 +21,7 @@
     <link rel="mask-icon" href="./favicon.svg" color="#595653"/>
     <link rel="icon" href="./favicon.svg"/>
     <link rel="preload" as="image" href="./images/gray_wall_tile.webp" type="image/webp" fetchpriority="high">
-    <script src="./js/stages-carousel.js" type="module"></script>
+    <script src="./js/carousel.js" type="module"></script>
     <script src="./js/main.js" type="module"></script>
 </head>
 <body>
@@ -203,7 +203,7 @@
                     <button
                             type="button"
                             class="btn btn-prev stages-screen_carousel-controls--prev"
-                            aria-label="Перейти к предыдущему слайду"></button>
+                            aria-label="Перейти к предыдущему слайду" disabled></button>
                     <div class="stages-screen_carousel-controls--dots"></div>
                     <button
                             type="button"
@@ -288,7 +288,9 @@
                             type="button"
                             class="btn btn-prev participants-screen_carousel-controls--prev"
                             aria-label="Перейти к предыдущему слайду"></button>
-                    <div class="stages-screen_carousel-controls--slides"></div>
+                    <div class="stages-screen_carousel-controls--counter">
+                        <span data-carousel-current>3</span> / <span data-carousel-total>6</span>
+                    </div>
                     <button
                             type="button"
                             class="btn btn-next participants-screen_carousel-controls--next"
