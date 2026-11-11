@@ -36,7 +36,7 @@
         transform: none;
         text-align: center;
         display: block;
-        padding: 24px 0;
+        padding: var(--gap--medium) 0;
 
         img{
           display: inline-block;

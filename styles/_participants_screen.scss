@@ -2,10 +2,10 @@
 
 .participants-screen {
   &_header {
-    margin-bottom: var(--participans-header-gap);
+    margin-bottom: var(--participants-header-gap);
 
     @media (max-width: #{v.$screen-small}) {
-      margin-bottom: var(--participans-v-gap);
+      margin-bottom: var(--participants-v-gap);
     }
   }
 
@@ -13,14 +13,14 @@
     text-align: center;
 
     &_avatar {
-      width: 320px;
-      height: 320px;
+      width: var(--avatar-size);
+      height: var(--avatar-size);
       padding: 21px;
-      border-radius: var(--circe);
+      border-radius: var(--circle);
       box-sizing: border-box;
-      background-image: url('./images/stamp_paper.webp');
+      background-image: var(--bg-paper);
       background-position: center center;
-      background-color: #424241;
+      background-color: var(--avatar-bg);
       overflow: hidden;
       margin: 0 auto 28px;
 
@@ -37,7 +37,7 @@
 
     &_bio {
       margin: 0 0 20px;
-      color: var(--participans-bio-color);
+      color: var(--text-muted);
     }
     &_details {
       margin: 0;
@@ -45,8 +45,8 @@
 
     @media (max-width: #{v.$screen-medium}) {
       &_avatar {
-        width: 223px;
-        height: 223px;
+        width: var(--avatar-size--mobile);
+        height: var(--avatar-size--mobile);
       }
     }
   }
@@ -81,9 +81,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 16px;
+      gap: var(--carousel-controls-gap);
       position: absolute;
-      top: calc((var(--participans-header-gap) + var(--btn-size) + 11px) * -1);
+      top: calc((var(--participants-header-gap) + var(--btn-size) + 11px) * -1);
       right: 0;
     }
 
@@ -98,7 +98,7 @@
       }
 
       &-controls {
-        top: calc((var(--participans-v-gap) + var(--btn-size) + 11px) * -1);
+        top: calc((var(--participants-v-gap) + var(--btn-size) + 11px) * -1);
       }
     }
 
@@ -107,7 +107,7 @@
         position: static;
         top: auto;
         right: auto;
-        margin-top: var(--participans-v-gap);
+        margin-top: var(--participants-v-gap);
       }
     }
 

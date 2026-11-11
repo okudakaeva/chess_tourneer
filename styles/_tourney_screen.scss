@@ -5,7 +5,7 @@
   grid-template-columns: 479px 1fr;
   grid-template-rows: auto 1fr;
   gap: 17px;
-  margin-bottom: 200px;
+  margin-bottom: var(--section-gap);
 
   &_picture {
     grid-row: span 2;
@@ -73,7 +73,7 @@
 
   @media (max-width: #{v.$tablet-landscape}) {
     display: block;
-    margin-bottom: 120px;
+    margin-bottom: var(--section-gap--mobile);
 
     &_picture {
       position: static;

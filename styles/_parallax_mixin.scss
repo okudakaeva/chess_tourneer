@@ -19,9 +19,9 @@ $layers: (
                 repeat: no-repeat
         ),
         wall: (
-                img: url("./images/gray_wall_tile.webp"),
+                img: var(--bg-wall),
                 pos: center bottom,
-                size: 448px 448px,
+                size: var(--bg-wall-size),
                 blend: color-burn,
                 repeat: repeat
         ),
@@ -146,7 +146,7 @@ $layers: (
   @media (max-width: #{v.$tablet-portrait}) {
     $mob: (
             knight: (pos: right calc(50% - 44.5px) bottom, size: 89px 98px),
-            wall: (pos: center bottom, size: 224px 224px),
+            wall: (pos: center bottom, size: var(--bg-wall-size--mobile)),
             city: (pos: right -95px bottom -11px, size: 880px 255px),
             king: (pos: right 250px bottom 110px, size: 65px 133px),
             queen: (pos: right 80px bottom 154px, size: 73px 133px),
@@ -164,7 +164,7 @@ $layers: (
 
 @mixin parallax-start {
   @media (prefers-reduced-motion: no-preference) {
-    transition: background-position 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: background-position var(--parallax-duration) cubic-bezier(0.22, 1, 0.36, 1);
 
     @starting-style {
       @include render-layers((pawn, knight, city, king, queen, signals, ellipse), $is-start: true);

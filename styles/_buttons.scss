@@ -45,7 +45,7 @@ button {
 .button, .button-details {
   @include f.GolosText(500);
   font-size: var(--button-font-size);
-  line-height: var(--button-line-height);
+  line-height: var(--line-height--expanded);
 }
 
 .button {
@@ -66,8 +66,8 @@ button {
   }
 
   @media (max-width: #{v.$tablet-portrait}) {
-    width: var(--button-width-mobile);
-    padding: var(--button-padding-moible);
+    width: var(--button-width--mobile);
+    padding: var(--button-padding--mobile);
     margin-bottom: 14px;
   }
 }
@@ -75,7 +75,7 @@ button {
 .btn {
   width: var(--btn-size);
   height: var(--btn-size);
-  border-radius: var(--circe);
+  border-radius: var(--circle);
 
   &:active {
     opacity: .75;
@@ -100,7 +100,7 @@ button {
 .button-details {
   height: 35px;
   background: transparent;
-  line-height: var(--button-details-line-height);
+  line-height: var(--line-height--base);
   border: 1px solid var(--button-details-base);
   color: var(--button-details-base);
   padding: var(--button-details-padding);

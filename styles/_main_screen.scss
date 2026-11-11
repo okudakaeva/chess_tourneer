@@ -8,6 +8,10 @@
     margin-bottom: 62px;
     gap: 6px;
 
+    @media (max-width: #{v.$tablet-portrait}) {
+      margin-bottom: 40px;
+    }
+
     &_item {
       line-height: 100%;
 
@@ -37,12 +41,12 @@
 
     &_header {
       @include f.Merriweather();
-      font-size: 60px;
-      line-height: 110%;
+      font-size: var(--h1-size);
+      line-height: var(--line-height--collapsed);
       color: var(--base-text);
       text-transform: uppercase;
       margin-top: 0;
-      margin-bottom: 24px;
+      margin-bottom: var(--gap--medium);
 
       &_accent {
         display: block;
@@ -56,7 +60,8 @@
     &_content {
       text-align: center;
       font-size: 18px;
-      line-height: 130%;
+      line-height: var(--line-height--expanded);
+      margin: 0;
 
       @media (max-width: #{v.$screen-medium}) and (min-width: #{v.$tablet-portrait}) {
         text-shadow: 0 0 5px var(--button-text);
@@ -70,7 +75,7 @@
       margin-bottom: 32px;
 
       &_header {
-        font-size: 36px;
+        font-size: var(--h1-size--mobile);
 
         &_accent {
           &--right {
@@ -97,11 +102,11 @@
     }
   }
 
-  .links {
+  &_links {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 16px;
+    gap: var(--gap--base);
 
     @media (max-width: #{v.$tablet-portrait}) {
       display: block;

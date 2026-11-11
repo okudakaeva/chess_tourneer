@@ -7,7 +7,11 @@ $screen-medium: 1250px;
 
 :root {
   --base-font-size: 20px;
-  --base-line-height: 120%;
+  --gap--base: 16px;
+  --gap--medium: 24px;
+  --line-height--base: 120%;
+  --line-height--collapsed: 110%;
+  --line-height--expanded: 130%;
   --body-bg: #ffffff;
   --base-bg: #E9DED4;
   --block-bg: #f4edd2;
@@ -16,45 +20,56 @@ $screen-medium: 1250px;
   --link-text: #3057A2;
   --header-link-text: #f54932;
   --table-border: #D0D0D0;
+  --text-muted: #767676;
+
+  --avatar-bg: #424241;
+  --avatar-size: 320px;
+  --avatar-size--mobile: 223px;
 
   --container-width: 89.45%;
-  --container-width-mobile: 89.6%;
+  --container-width--mobile: 89.6%;
   --container-max-width: 1604px;
 
   --header-min-height: 700px;
-  --header-min-height-mobile: 812px;
+  --header-min-height--mobile: 774px;
   --header-padding-top: 18px;
-  --header-padding-top-mmobile: 16px;
+  --header-padding-top--mobile: 16px;
   --header-padding-bottom: 134px;
+  --h1-size: 60px;
+  --h1-size--mobile: 36px;
+  --h2-size: 54px;
+  --h2-size--mobile: 36px;
+  --h3-size: 36px;
+  --h3-size--mobile: 28px;
+  --h3-line-height: 135%;
+  --h4-size: 24px;
+  --heading-gap: 31px;
 
   --footer-min-height: 150px;
   --footer-padding: 40px 0 60px;
   --footer-font-size: 16px;
-  --footer-line-height: 120%;
 
   --marquee-height: 60px;
-  --marquee-height-mobile: 38px;
+  --marquee-height--mobile: 38px;
   --marquee-padding: 18px 0;
-  --marquee-padding-mobile: 10px 0;
+  --marquee-padding--mobile: 10px 0;
   --marquee-font-size: 22px;
-  --marquee-font-size-mobile: 16px;
-  --marquee-line-height: 110%;
+  --marquee-font-size--mobile: 16px;
   --marquee-gap: 12px;
   --marquee-bg: #F54932;
   --marquee-text: #fff;
+  --marquee-duration: 15s;
 
   --button-width: 263px;
-  --button-width-mobile: 100%;
+  --button-width--mobile: 100%;
   --button-padding: 13px 49px;
-  --button-padding-moible: 11px 20px;
+  --button-padding--mobile: 11px 20px;
   --button-border-radius: 66px;
   --button-font-size: 16px;
-  --button-line-height: 130%;
   --button-base: #1F1F1F;
   --button-text: #fff;
   --button-accent: #FBCE51;
   --button-disabled: #D6D6D6;
-  --button-details-line-height: 120%;
   --button-details-base: #3057A2;
   --button-details-padding: 6px 12px;
 
@@ -70,7 +85,7 @@ $screen-medium: 1250px;
   --icon-arrow-right: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAxMiAyMCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjIwIj48cGF0aCBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiIHN0cm9rZS13aWR0aD0iMiIgZD0ibTEuNDE0IDEuNDE0IDguNDYyIDguNDYyLTguNDYyIDguNDYxIi8+PC9zdmc+");
   --arrow-width: 12px;
   --arrow-height: 20px;
-  --circe: 50%;
+  --circle: 50%;
 
   --mobile-portrait: #{$mobile-portrait};
   --tablet-portrait: #{$tablet-portrait};
@@ -83,7 +98,17 @@ $screen-medium: 1250px;
   --main-bottom-gap: 140px;
   --main-bottom-gap--mobile: 100px;
 
-  --participans-header-gap: 60px;
-  --participans-v-gap: 40px;
-  --participans-bio-color: #767676;
+  --section-gap: 200px;
+  --section-gap--mobile: 120px;
+
+  --participants-header-gap: 60px;
+  --participants-v-gap: 40px;
+
+  --bg-paper: url("./images/stamp_paper.webp");
+  --bg-wall: url("./images/gray_wall_tile.webp");
+  --bg-wall-size: 448px 448px;
+  --bg-wall-size--mobile: 224px 224px;
+  --parallax-duration: 0.9s;
+
+  --carousel-controls-gap: 16px;
 }
