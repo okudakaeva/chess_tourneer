@@ -130,6 +130,10 @@
       bottom: 0;
       z-index: 10;
       pointer-events: none;
+
+      img {
+        pointer-events: none;
+      }
     }
 
     &-controls {
@@ -215,11 +219,14 @@
       }
 
       &-plane {
-        width: auto;
-        max-height: 200px;
         right: -10px;
         top: -127px;
         bottom: auto;
+
+        img {
+          width: auto;
+          max-height: 200px;
+        }
       }
 
       &-controls {

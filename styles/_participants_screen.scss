@@ -38,6 +38,9 @@
       margin: 0 0 20px;
       color: #838383;
     }
+    &_details {
+      margin: 0;
+    }
 
     @media (max-width: #{v.$screen-medium}) {
       &_avatar {
