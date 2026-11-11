@@ -132,8 +132,13 @@ table {
 }
 
 .main {
-  padding-top: 90px;
-  padding-bottom: 140px;
+  padding-top: var(--main-top-gap);
+  padding-bottom: var(--main-bottom-gap);
+
+  @media (max-width: #{v.$tablet-landscape}) {
+    padding-top: var(--main-top-gap--mobile);
+    padding-bottom: var(--main-bottom-gap--mobile);
+  }
 }
 
 .header, .footer {
