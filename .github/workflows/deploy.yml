@@ -95,6 +95,11 @@ jobs:
             }
           '
 
+      - name: Подготовка ветки badges
+        run: |
+          git fetch origin badges || true
+          git checkout -B badges
+
       - name: Коммит обновленных датчиков в репозиторий
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
