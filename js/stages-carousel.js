@@ -55,10 +55,8 @@ export class StagesCarousel {
         const fragment = document.createDocumentFragment();
 
         this.#slides.forEach((_, index) => {
-            const dot = document.createElement('button');
-            dot.type = 'button';
+            const dot = document.createElement('span');
             dot.classList.add(this.#options.dot);
-            dot.setAttribute('aria-label', `Перейти к слайду ${ index + 1 }`);
 
             if (index === 0) dot.classList.add(this.#options.dotActive);
 

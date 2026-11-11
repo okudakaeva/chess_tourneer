@@ -49,7 +49,7 @@ h1 {
 
 h2 {
   font-size: 54px;
-  line-height: 120%;
+  line-height: var(--base-line-height);
 
   @media (max-width: #{v.$tablet-portrait}) {
     font-size: 36px;
@@ -64,6 +64,13 @@ h3 {
   @media (max-width: #{v.$tablet-portrait}) {
     font-size: 28px;
   }
+}
+h4, h5, h6 {
+  @include f.GolosText(600);
+}
+h4 {
+  font-size: 24px;
+  line-height: var(--base-line-height);
 }
 b, strong {
   @include f.GolosText(700);

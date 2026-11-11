@@ -1,0 +1,121 @@
+@use "variables" as v;
+
+.participants-screen {
+  &_header {
+    margin-bottom: var(--participans-header-gap);
+
+    @media (max-width: #{v.$screen-small}) {
+      margin-bottom: var(--participans-v-gap);
+    }
+  }
+
+  .participant {
+    text-align: center;
+
+    &_avatar {
+      width: 320px;
+      height: 320px;
+      padding: 21px;
+      border-radius: var(--circe);
+      box-sizing: border-box;
+      background-image: url('./images/stamp_paper.webp');
+      background-position: center center;
+      background-color: #424241;
+      overflow: hidden;
+      margin: 0 auto 28px;
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    &_name {
+      margin: 0 0 6px;
+    }
+
+    &_bio {
+      margin: 0 0 20px;
+      color: #838383;
+    }
+
+    @media (max-width: #{v.$screen-medium}) {
+      &_avatar {
+        width: 223px;
+        height: 223px;
+      }
+    }
+  }
+
+  &_carousel {
+    position: relative;
+    width: 100%;
+
+    &-track {
+      display: flex;
+      flex-wrap: nowrap;
+      flex-direction: row;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      justify-content: space-between;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    &-card {
+      flex-basis: 33.33%;
+      width: 33.33%;
+      flex-grow: 1;
+      flex-shrink: 0;
+    }
+
+    &-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      position: absolute;
+      top: calc((var(--participans-header-gap) + var(--btn-size) + 11px) * -1);
+      right: 0;
+    }
+
+    @media (max-width: #{v.$screen-small}) {
+      &-track {
+        gap: 10px;
+      }
+
+      &-card {
+        flex-basis: 50%;
+        width: 50%;
+      }
+
+      &-controls {
+        top: calc((var(--participans-v-gap) + var(--btn-size) + 11px) * -1);
+      }
+    }
+
+    @media (max-width: #{v.$tablet-landscape}) {
+      &-controls {
+        position: static;
+        top: auto;
+        right: auto;
+        margin-top: var(--participans-v-gap);
+      }
+    }
+
+    @media (max-width: #{v.$tablet-plus-portrait}) {
+      &-track {
+        gap: 0;
+      }
+
+      &-card {
+        flex-basis: 100%;
+        width: 100%;
+      }
+    }
+  }
+}
