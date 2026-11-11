@@ -7,7 +7,8 @@
 
 https://okudakaeva.github.io/chess_tourneer/
 
-![Performance](./images/lighthouse_performance.svg) ![Accessibility](./images/lighthouse_accessibility.svg) ![Best Practices](./images/lighthouse_best-practices.svg) ![SEO](./images/lighthouse_seo.svg)
+![Performance](https://raw.githubusercontent.com/okudakaeva/chess_tourneer/refs/heads/badges/images/lighthouse_performance.svg) ![Accessibility](https://raw.githubusercontent.com/okudakaeva/chess_tourneer/refs/heads/badges/images/lighthouse_accessibility.svg) ![Best Practices](https://raw.githubusercontent.com/okudakaeva/chess_tourneer/refs/heads/badges/images/lighthouse_best-practices.svg) ![SEO](https://raw.githubusercontent.com/okudakaeva/chess_tourneer/refs/heads/badges/images/lighthouse_seo.svg)
+
 
 ---
 
