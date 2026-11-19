@@ -4,7 +4,7 @@
 .main-screen {
   &_branding {
     display: flex;
-    align-items: center;
+    align-items: end;
     margin-bottom: 62px;
     gap: 6px;
 
@@ -21,7 +21,7 @@
 
       &_header {
         @include f.GolosText(700);
-        font-size: 16.65px;
+        font-size: 17px;
         line-height: 108%;
         text-transform: uppercase;
         margin: 0;
@@ -30,6 +30,15 @@
 
         @media (max-width: #{v.$mobile-portrait}) {
           font-size: 14.42px
+        }
+
+        .pony {
+          @include f.System;
+          vertical-align: 20%;
+
+          &.mono-emoji {
+            vertical-align: 10%;
+          }
         }
       }
     }

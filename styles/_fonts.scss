@@ -10,3 +10,9 @@
   font-optical-sizing: auto;
   font-weight: $weight;
 }
+
+@mixin System {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Noto Sans Symbols 2", sans-serif;
+  font-weight: normal;
+  font-optical-sizing: none;
+}

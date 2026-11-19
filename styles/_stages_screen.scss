@@ -209,7 +209,7 @@
         padding: 0 0 28px;
         background: none;
 
-        + &-card {
+        & + &-card {
           padding-bottom: 0;
         }
 

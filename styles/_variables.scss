@@ -113,3 +113,11 @@ $screen-medium: 1250px;
 
   --carousel-controls-gap: 16px;
 }
+
+@mixin mono-emoji($white: false) {
+  @if $white {
+    filter: grayscale(100%) brightness(0) invert(1);
+  } @else {
+    filter: grayscale(100%) contrast(150%);
+  }
+}

@@ -180,3 +180,8 @@ figure {
     min-height: var(--header-min-height--mobile);
   }
 }
+
+.mono-emoji {
+  @include v.mono-emoji;
+  @include f.System;
+}
