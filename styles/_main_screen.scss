@@ -35,8 +35,10 @@
         .pony {
           @include f.System;
           vertical-align: 20%;
+          font-size: 1.18em;
 
           &.mono-emoji {
+            font-size: 1em;
             vertical-align: 10%;
           }
         }

@@ -48,34 +48,40 @@
 
   &--ponies &-content span {
     &:after {
+      @include f.System;
       width: auto;
       height: auto;
       mask-image: none;
       background-color: transparent;
       color: var(--marquee-text);
-      line-height: 1;
       text-transform: none;
-      @include f.System;
+      line-height: 1em;
     }
 
     &:nth-child(4n + 1):after {
       content: "\265E\FE0E";
-      transform: translateY(-0.12em);
+      line-height: 0.95em;
     }
 
     &:nth-child(4n + 2):after {
       content: "\1F434\FE0E";
       @include v.mono-emoji;
+      font-size: 0.95em;
+      line-height: 1em;
+      transform: translateY(0.12em);
     }
 
     &:nth-child(4n + 3):after {
       content: "\2658\FE0E";
-      transform: translateY(-0.12em);
+      line-height: 0.95em;
     }
 
     &:nth-child(4n + 4):after {
       content: "\1F984\FE0E";
       @include v.mono-emoji;
+      font-size: 0.95em;
+      line-height: 1em;
+      transform: translateY(0.12em);
     }
   }
 
