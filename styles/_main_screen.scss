@@ -8,10 +8,6 @@
     margin-bottom: 62px;
     gap: 6px;
 
-    @media (max-width: #{v.$tablet-portrait}) {
-      margin-bottom: 40px;
-    }
-
     &_item {
       line-height: 100%;
 
@@ -42,6 +38,16 @@
             font-size: 1em;
             vertical-align: 10%;
           }
+        }
+      }
+    }
+
+    @media (max-width: #{v.$tablet-portrait}) {
+      margin-bottom: 40px;
+
+      &_item {
+        &_logo {
+          margin-bottom: 0;
         }
       }
     }
